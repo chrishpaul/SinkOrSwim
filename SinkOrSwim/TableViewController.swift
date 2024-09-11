@@ -128,7 +128,6 @@ class TableViewController: UITableViewController {
            let mandarinWord = cell.detailTextLabel?.text,
            let englishWord = cell.textLabel?.text{
             vc.englishWord = englishWord
-            vc.mandarinWord = mandarinWord
         }
     }
     

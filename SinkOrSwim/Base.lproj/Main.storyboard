@@ -168,6 +168,27 @@
                                     <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="XQt-mS-rrb"/>
                                 </connections>
                             </segmentedControl>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="Previous/Next Word" wraps="YES" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-up-eKf">
+                                <rect key="frame" x="150" y="121" width="94" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeWord:" destination="BYZ-38-t0r" eventType="valueChanged" id="C6g-RW-UiS"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prev" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDw-Bq-UMc">
+                                <rect key="frame" x="16" y="127" width="126" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egB-ww-bsU">
+                                <rect key="frame" x="252" y="126" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -187,11 +208,12 @@
                         <outlet property="englishLabel" destination="K5H-gT-UQT" id="Hi0-8R-sWn"/>
                         <outlet property="mandarinLabel" destination="Grc-VX-U6k" id="7s5-Hk-1S4"/>
                         <outlet property="pinyinLabel" destination="aJS-63-U8k" id="m6S-31-xtv"/>
+                        <outlet property="wordNavigation" destination="OS2-up-eKf" id="TQ9-aH-ugN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="-838"/>
+            <point key="canvasLocation" x="35.877862595419849" y="-838.0281690140846"/>
         </scene>
         <!--Picture Dictionary-->
         <scene sceneID="Ut6-km-ePc">

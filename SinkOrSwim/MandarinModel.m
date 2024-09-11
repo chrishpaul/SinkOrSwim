@@ -92,4 +92,9 @@
     return self.pinyinDict[englishWord];
 }
 
+-(NSInteger)getIndexOfWord:(NSString*)englishWord{
+    return (NSInteger)[self.englishWords indexOfObject:englishWord];
+}
+
+
 @end
