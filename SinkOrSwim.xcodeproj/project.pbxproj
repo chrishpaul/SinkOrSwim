@@ -14,6 +14,7 @@
 		84341A2A2C91F4B000F28CC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84341A292C91F4B000F28CC7 /* Assets.xcassets */; };
 		84341A2D2C91F4B000F28CC7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 84341A2C2C91F4B000F28CC7 /* Base */; };
 		84341A352C91F64D00F28CC7 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A342C91F64C00F28CC7 /* TableViewController.swift */; };
+		84341A392C91F87200F28CC7 /* MandarinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84341A382C91F87200F28CC7 /* MandarinModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		84341A2C2C91F4B000F28CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84341A2E2C91F4B000F28CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84341A342C91F64C00F28CC7 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		84341A362C91F87100F28CC7 /* SinkOrSwim-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SinkOrSwim-Bridging-Header.h"; sourceTree = "<group>"; };
+		84341A372C91F87200F28CC7 /* MandarinModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MandarinModel.h; sourceTree = "<group>"; };
+		84341A382C91F87200F28CC7 /* MandarinModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MandarinModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,8 +46,11 @@
 		84341A142C91F4AD00F28CC7 = {
 			isa = PBXGroup;
 			children = (
+				84341A372C91F87200F28CC7 /* MandarinModel.h */,
+				84341A382C91F87200F28CC7 /* MandarinModel.m */,
 				84341A1F2C91F4AE00F28CC7 /* SinkOrSwim */,
 				84341A1E2C91F4AE00F28CC7 /* Products */,
+				84341A362C91F87100F28CC7 /* SinkOrSwim-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +109,7 @@
 				TargetAttributes = {
 					84341A1C2C91F4AE00F28CC7 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -143,6 +151,7 @@
 			files = (
 				84341A252C91F4AE00F28CC7 /* ViewController.swift in Sources */,
 				84341A212C91F4AE00F28CC7 /* AppDelegate.swift in Sources */,
+				84341A392C91F87200F28CC7 /* MandarinModel.m in Sources */,
 				84341A232C91F4AE00F28CC7 /* SceneDelegate.swift in Sources */,
 				84341A352C91F64D00F28CC7 /* TableViewController.swift in Sources */,
 			);
@@ -294,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASNJ8769CQ;
@@ -312,6 +322,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CSP.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,6 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASNJ8769CQ;
@@ -340,6 +353,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CSP.SinkOrSwim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SinkOrSwim-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
