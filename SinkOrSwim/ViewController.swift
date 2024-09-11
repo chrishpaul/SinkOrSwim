@@ -28,6 +28,30 @@ class ViewController: UIViewController {
         pinyinLabel.text = self.mandarinModel.getPinyinForEnglish(englishWord)
     }
 
-
+    @IBAction func switchChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            mandarinLabel.isHidden = false
+            englishLabel.isHidden = false
+            pinyinLabel.isHidden = false
+        case 1:
+            mandarinLabel.isHidden = false
+            englishLabel.isHidden = true
+            pinyinLabel.isHidden = true
+        case 2:
+            mandarinLabel.isHidden = true
+            englishLabel.isHidden = true
+            pinyinLabel.isHidden = false
+        case 3:
+            mandarinLabel.isHidden = true
+            englishLabel.isHidden = false
+            pinyinLabel.isHidden = true
+        default:
+            mandarinLabel.isHidden = false
+            englishLabel.isHidden = false
+            pinyinLabel.isHidden = false
+        }
+    }
+    
 }
 
