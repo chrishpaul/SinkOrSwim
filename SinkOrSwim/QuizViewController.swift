@@ -7,10 +7,30 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    lazy var mandarinModel : MandarinModel = {
+        return MandarinModel.sharedInstance();
+    }()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.mandarinModel.numberOfWords()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.mandarinModel.getEnglishWord(at: row)
+    }
+    
 
+    @IBOutlet weak var answerPicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        answerPicker.delegate = self
+        answerPicker.dataSource = self
 
         // Do any additional setup after loading the view.
     }
