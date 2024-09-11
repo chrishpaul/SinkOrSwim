@@ -18,7 +18,11 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    lazy var mandarinModel: MandarinModel = {
+        return MandarinModel.sharedInstance()
+    }()
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,19 +31,59 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        if section == 0{
+            print(self.mandarinModel.numberOfWords())
+            return self.mandarinModel.numberOfWords()
+        }else{
+            return 1
+        }
     }
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
+            
+            let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
+            cell.textLabel?.text = englishWord
+            cell.detailTextLabel?.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+            
+            return cell
+        }else if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
+            cell.textLabel?.text = "Quiz"
+            cell.textLabel?.textAlignment = NSTextAlignment.center
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath)
+            cell.textLabel?.textAlignment = NSTextAlignment.center
+            cell.textLabel?.text = "Picture Dictionary"
+            return cell
+        }
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
+            
+            let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
+            cell.textLabel?.text = englishWord
+            cell.detailTextLabel?.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+            
+            return cell
+        }else if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
+            cell.textLabel?.text = "Quiz"
+            cell.textLabel?.textAlignment = NSTextAlignment.center
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath)
+            cell.textLabel?.textAlignment = NSTextAlignment.center
+            cell.textLabel?.text = "Picture Dictionary"
+            return cell
+        }
     }
-    */
-
+*/
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -84,5 +128,13 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection
+                                section: Int) -> String? {
+        if section == 0 {
+            return "This Week's Vocabulary:"
+        }
+        return nil
+    }
 
 }
