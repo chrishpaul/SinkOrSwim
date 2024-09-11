@@ -32,7 +32,6 @@ class TableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            print(self.mandarinModel.numberOfWords())
             return self.mandarinModel.numberOfWords()
         }else{
             return 1
