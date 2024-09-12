@@ -51,7 +51,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         answerPicker.delegate = self
         answerPicker.dataSource = self
-        
+        countdownLabel.text = "Time Remaining: " + String(countDown) + " s"
         resultLabel.isHidden = true
         
         if let englishWord = self.testWords[0] as? String{
@@ -59,22 +59,28 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         print(self.testWords)
         
+        /*
         var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(changeLabel), userInfo: nil, repeats: true)
-
+         */
         // Do any additional setup after loading the view.
         //self.testWords;
     }
     
-    @objc func changeLabel(){
+    @objc func countdownTimer(){
         countDown -= 1
         var result = ""
         if countDown > 0 {
-            result = String(countDown)
+            result = "Time Remaining: " + String(countDown) + " s"
+        }else if countDown == 0 {
+            result = "Time's Up!"
+            self.submitButton.isHidden = true
+            self.answerPicker.isHidden = true
+            self.resultLabel.isHidden = true
         }else{
-            result = "Times Up"
+            
         }
-        self.resultLabel.text =  result
-        self.resultLabel.isHidden = false
+        self.countdownLabel.text =  result
+        //self.resultLabel.isHidden = false
             
     }
     
@@ -93,10 +99,11 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let englishWord = self.mandarinModel.getEnglishWord(at: index)
         print(englishWord)
         //let english =
-        let correct = self.mandarinModel.getMandarinForEnglish(englishWord)
-        print(correct)
+        let answer = self.mandarinModel.getMandarinForEnglish(englishWord)
+        print(answer)
         var result = ""
-        if correct == self.mandarinLabel.text{
+        if answer == self.mandarinLabel.text{
+            countDown = 0
             result = "Correct answer. Good Job!"
             //self.resultLabel.text = "Correct answer. Good Job!"
             //self.resultLabel.isHidden = false
@@ -108,6 +115,20 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         self.resultLabel.text = result
         self.resultLabel.isHidden = false
+    }
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBAction func startQuiz(_ sender: UIButton) {
+        self.startButton.isHidden = true
+        self.mandarinLabel.isHidden = false
+        self.answerPicker.isHidden = false
+        self.submitButton.isHidden = false
+        
+        
+        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
+        
     }
     
 }
