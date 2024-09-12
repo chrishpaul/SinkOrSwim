@@ -48,4 +48,3 @@ Tracking Items:
 - [ ] Modal view and handle properly using custom protocols/delegation (1pts)
 - [ ] Tested the app running on a device, not the emulator to ensure it runs in all scenarios.
 - [ ] Coding Style: Organization, comments, object oriented structures used, proper Objective C or Swift paradigms implemented (2pts)
-- [ ]  
