@@ -19,6 +19,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }()
     
     var timer : Timer?
+    var wordindex : Int = 0
     
     lazy var testWords : NSArray = {
         if let testWords = self.mandarinModel.getShuffledWords() as NSArray?{
@@ -56,9 +57,12 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         countdownLabel.text = "Time Remaining: " + String(countDown) + " s"
         resultLabel.isHidden = true
         
+        showNextWord()
+        /*
         if let englishWord = self.testWords[0] as? String{
             mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         }
+        */
         print(self.testWords)
         
         /*
@@ -66,6 +70,12 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
          */
         // Do any additional setup after loading the view.
         //self.testWords;
+    }
+    
+    func showNextWord(){
+        if let englishWord = self.testWords[wordindex] as? String{
+            mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+        }
     }
     
     @objc func countdownTimer(){
@@ -95,6 +105,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Pass the selected object to the new view controller.
     }
     */
+    
     @IBAction func submitClicked(_ sender: UIButton) {
         let index = self.answerPicker.selectedRow(inComponent: 0)
         let englishWord = self.mandarinModel.getEnglishWord(at: index)
@@ -104,17 +115,11 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         print(answer)
         var result = ""
         if answer == self.mandarinLabel.text{
-            //countDown = 0
             self.submitButton.isHidden = true
             result = "Correct answer. Good Job!"
             stopTimer()
-            //self.resultLabel.text = "Correct answer. Good Job!"
-            //self.resultLabel.isHidden = false
-            //print("Correct answer. Good Job!")
         }else{
             result = "Wrong answer. Try again."
-            //self.resultLabel.text = "Wrong answer. Try again."
-            //print("Wrong answer. Try again.")
         }
         self.resultLabel.text = result
         self.resultLabel.isHidden = false
@@ -122,16 +127,18 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBAction func startQuiz(_ sender: UIButton) {
         self.startButton.isHidden = true
         self.mandarinLabel.isHidden = false
         self.answerPicker.isHidden = false
         self.submitButton.isHidden = false
-        
+                
         startTimer()
-        
-        //var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
+
+    }
+    @IBAction func nextQuestion(_ sender: UIButton) {
         
     }
     func startTimer () {

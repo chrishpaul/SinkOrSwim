@@ -148,6 +148,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8U-Up-aMc">
+                                <rect key="frame" x="167" y="628" width="60" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Next"/>
+                                <connections>
+                                    <action selector="nextQuestion:" destination="cHg-wv-XrQ" eventType="touchUpInside" id="t1h-kj-gXQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="61K-8X-2Qi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -157,6 +166,7 @@
                         <outlet property="answerPicker" destination="ehu-DU-QyZ" id="u7W-Tt-TaB"/>
                         <outlet property="countdownLabel" destination="Knz-Hq-3Mn" id="UkX-BG-XrJ"/>
                         <outlet property="mandarinLabel" destination="beU-su-nr0" id="s5s-GK-Lzc"/>
+                        <outlet property="nextButton" destination="p8U-Up-aMc" id="Jfh-Gv-anR"/>
                         <outlet property="resultLabel" destination="cAH-dz-q7X" id="3tE-n9-fsH"/>
                         <outlet property="startButton" destination="TC7-hh-Q1r" id="auG-2w-FAs"/>
                         <outlet property="submitButton" destination="wiR-gt-0Id" id="tBU-kS-fvq"/>
