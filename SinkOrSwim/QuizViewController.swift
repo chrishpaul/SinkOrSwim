@@ -28,6 +28,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //var words = self.mandarinModel.getShuffledWords();
         //return words;
     }()
+    
+    var countDown : Int = 10
 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,9 +58,24 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         }
         print(self.testWords)
+        
+        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(changeLabel), userInfo: nil, repeats: true)
 
         // Do any additional setup after loading the view.
         //self.testWords;
+    }
+    
+    @objc func changeLabel(){
+        countDown -= 1
+        var result = ""
+        if countDown > 0 {
+            result = String(countDown)
+        }else{
+            result = "Times Up"
+        }
+        self.resultLabel.text =  result
+        self.resultLabel.isHidden = false
+            
     }
     
 
