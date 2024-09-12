@@ -18,6 +18,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return MandarinModel.sharedInstance();
     }()
     
+    var timer : Timer?
+    
     lazy var testWords : NSArray = {
         if let testWords = self.mandarinModel.getShuffledWords() as NSArray?{
             //print(testWords)
@@ -71,13 +73,12 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var result = ""
         if countDown > 0 {
             result = "Time Remaining: " + String(countDown) + " s"
-        }else if countDown == 0 {
+        }else{
+            stopTimer()
             result = "Time's Up!"
             self.submitButton.isHidden = true
             self.answerPicker.isHidden = true
             self.resultLabel.isHidden = true
-        }else{
-            
         }
         self.countdownLabel.text =  result
         //self.resultLabel.isHidden = false
@@ -103,8 +104,10 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         print(answer)
         var result = ""
         if answer == self.mandarinLabel.text{
-            countDown = 0
+            //countDown = 0
+            self.submitButton.isHidden = true
             result = "Correct answer. Good Job!"
+            stopTimer()
             //self.resultLabel.text = "Correct answer. Good Job!"
             //self.resultLabel.isHidden = false
             //print("Correct answer. Good Job!")
@@ -126,9 +129,19 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.answerPicker.isHidden = false
         self.submitButton.isHidden = false
         
+        startTimer()
         
-        var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
+        //var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
         
     }
+    func startTimer () {
+        guard timer == nil else {return}
+
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownTimer), userInfo: nil, repeats: true)
+    }
     
+    func stopTimer () {
+        timer?.invalidate()
+        timer = nil
+    }
 }
