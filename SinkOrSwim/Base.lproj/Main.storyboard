@@ -123,6 +123,7 @@
                     <navigationItem key="navigationItem" id="1lT-IL-pR1"/>
                     <connections>
                         <outlet property="answerPicker" destination="ehu-DU-QyZ" id="u7W-Tt-TaB"/>
+                        <outlet property="mandarinLabel" destination="beU-su-nr0" id="s5s-GK-Lzc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTC-uP-LgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

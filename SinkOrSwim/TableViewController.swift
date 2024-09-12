@@ -125,7 +125,6 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ViewController,
            let cell = sender as? UITableViewCell,
-           let mandarinWord = cell.detailTextLabel?.text,
            let englishWord = cell.textLabel?.text{
             vc.englishWord = englishWord
         }

@@ -8,9 +8,25 @@
 import UIKit
 
 class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
+    @IBOutlet weak var mandarinLabel: UILabel!
+    
     lazy var mandarinModel : MandarinModel = {
         return MandarinModel.sharedInstance();
     }()
+    
+    lazy var testWords : NSArray = {
+        if let testWords = self.mandarinModel.getShuffledWords() as NSArray?{
+            //print(testWords)
+            return testWords
+        }
+        return NSArray.init()
+
+        //var words = self.mandarinModel.getShuffledWords();
+        //return words;
+    }()
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -31,8 +47,14 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         answerPicker.delegate = self
         answerPicker.dataSource = self
+        
+        if let englishWord = self.testWords[0] as? String{
+            mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+        }
+        print(self.testWords)
 
         // Do any additional setup after loading the view.
+        //self.testWords;
     }
     
 

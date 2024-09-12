@@ -7,12 +7,14 @@
 
 #import "MandarinModel.h"
 #import "UIKit/UIKit.h"
+#import <GameplayKit/GameplayKit.h>
 
 @interface MandarinModel()
 
 @property (strong, nonatomic) NSDictionary* mandarinDict;
 @property (strong, nonatomic) NSDictionary* pinyinDict;
 @property (strong, nonatomic) NSArray* englishWords;
+
 @end
 
 @implementation MandarinModel
@@ -94,6 +96,10 @@
 
 -(NSInteger)getIndexOfWord:(NSString*)englishWord{
     return (NSInteger)[self.englishWords indexOfObject:englishWord];
+}
+
+-(NSArray*)getShuffledWords{
+    return [self.englishWords shuffledArray];
 }
 
 

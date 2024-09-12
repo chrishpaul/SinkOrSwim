@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)getMandarinForEnglish:(NSString*)englishWord;
 -(NSString*)getPinyinForEnglish:(NSString*)englishWord;
 -(NSInteger)getIndexOfWord:(NSString*)englishWord;
+-(NSArray*)getShuffledWords;
+
 
 @end
 
