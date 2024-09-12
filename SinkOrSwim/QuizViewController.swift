@@ -12,6 +12,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var mandarinLabel: UILabel!
     
+    @IBOutlet weak var resultLabel: UILabel!
+    
     lazy var mandarinModel : MandarinModel = {
         return MandarinModel.sharedInstance();
     }()
@@ -48,6 +50,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         answerPicker.delegate = self
         answerPicker.dataSource = self
         
+        resultLabel.isHidden = true
+        
         if let englishWord = self.testWords[0] as? String{
             mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         }
@@ -67,5 +71,26 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func submitClicked(_ sender: UIButton) {
+        let index = self.answerPicker.selectedRow(inComponent: 0)
+        let englishWord = self.mandarinModel.getEnglishWord(at: index)
+        print(englishWord)
+        //let english =
+        let correct = self.mandarinModel.getMandarinForEnglish(englishWord)
+        print(correct)
+        var result = ""
+        if correct == self.mandarinLabel.text{
+            result = "Correct answer. Good Job!"
+            //self.resultLabel.text = "Correct answer. Good Job!"
+            //self.resultLabel.isHidden = false
+            //print("Correct answer. Good Job!")
+        }else{
+            result = "Wrong answer. Try again."
+            //self.resultLabel.text = "Wrong answer. Try again."
+            //print("Wrong answer. Try again.")
+        }
+        self.resultLabel.text = result
+        self.resultLabel.isHidden = false
+    }
+    
 }

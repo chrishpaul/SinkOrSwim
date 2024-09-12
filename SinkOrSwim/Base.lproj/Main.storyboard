@@ -116,6 +116,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiR-gt-0Id">
+                                <rect key="frame" x="158" y="628" width="78" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                <connections>
+                                    <action selector="submitClicked:" destination="cHg-wv-XrQ" eventType="touchUpInside" id="Nmk-Qg-XOI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAH-dz-q7X">
+                                <rect key="frame" x="16" y="690" width="361" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="61K-8X-2Qi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,6 +140,7 @@
                     <connections>
                         <outlet property="answerPicker" destination="ehu-DU-QyZ" id="u7W-Tt-TaB"/>
                         <outlet property="mandarinLabel" destination="beU-su-nr0" id="s5s-GK-Lzc"/>
+                        <outlet property="resultLabel" destination="cAH-dz-q7X" id="3tE-n9-fsH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTC-uP-LgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
