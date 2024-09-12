@@ -23,24 +23,29 @@ Results : UIView (Modal)
   1) Displays quiz results
   2) Buttons to restart quiz or return to LessonView
  
-
-Project Requirements:
-
-- Automatic Layout 
-- Buttons, Sliders, and Labels
-- Stepper and Switch
-- Picker (you must implement picker delegate)
-- Segmented Control
-- Timer (which should repeat and somehow update the UIView)
-- ScrollView (with scrollable, zoomable content)
-- Image View
-- Navigation Controller
-- Collection View Controller
-- Table View Controller with three different dynamic prototype cells
-- The design should work in both portrait and landscape mode
-- I should not be able to crash your app
-- Your design must strictly adhere to Model View Controller programming practices
-- Use lazy instantiation when possible
-- Exceptional Credit for 5000 students and for 7000 students:
-- Implement a modal view and handle properly using custom protocols/delegation
-- Test your app running on the device, not the emulator to ensure it runs in all scenarios. Also see the grading rubric for how much each element is worth. 
+Tracking Items:
+- [ ] Automatic Layout 
+- [x] Buttons (Quiz view)
+- [ ] Sliders
+- [ ] Labels (Quiz view, Word Review view)
+- [x] Stepper (Word Review)
+- [ ] Switch
+- [x] Picker (you must implement picker delegate) (Quiz)
+- [x] Segmented Control (Word Review)
+- [x] Timer (which should repeat and somehow update the UIView) (Quiz) (0.5pts)
+- [ ] ScrollView (with scrollable, zoomable content) (Word Review)
+- [ ] Image View (Word Review, Picture Dictionary)
+- [x] Navigation Controller. Proper navigation (1pt)
+- [ ] Collection View Controller (Picture Dictionary)
+- [ ] Table View Controller with three different dynamic prototype cells (Not hardcoded)
+- [ ] Type 1: English to Mandarin Word Cell
+- [ ] Type 2: Link to Quiz - would this be considered hard coding?
+- [ ] Type 3: Link to Picture Dictionary with pictures - would this be considered hard coding?
+- [ ] The design should work in both portrait and landscape mode. Use size classes if necessary. (2 pts)
+- [ ] Tested for crashing
+- [ ] Strictly adheres to Model View Controller programming practices. View should be agnostic to controller. Model should be agnostic to everything. (1pts)
+- [ ] Lazy instantiation used when possible
+- [ ] Modal view and handle properly using custom protocols/delegation (1pts)
+- [ ] Tested the app running on a device, not the emulator to ensure it runs in all scenarios.
+- [ ] Coding Style: Organization, comments, object oriented structures used, proper Objective C or Swift paradigms implemented (2pts)
+- [ ]  
