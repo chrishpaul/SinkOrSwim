@@ -32,7 +32,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //return words;
     }()
     
-    var countDown : Int = 10
+    var countDown : Int = 45
 
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,7 +57,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         countdownLabel.text = "Time Remaining: " + String(countDown) + " s"
         resultLabel.isHidden = true
         
-        showNextWord()
+        //showNextWord()
         /*
         if let englishWord = self.testWords[0] as? String{
             mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
@@ -73,9 +73,15 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func showNextWord(){
+        resultLabel.text = ""
         if let englishWord = self.testWords[wordindex] as? String{
             mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         }
+        wordindex += 1
+        //mandarinLabel.isHidden = false
+        //answerPicker.isHidden = false
+        submitButton.isHidden = false
+        self.submitButton.isHidden = false
     }
     
     @objc func countdownTimer(){
@@ -117,7 +123,13 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if answer == self.mandarinLabel.text{
             self.submitButton.isHidden = true
             result = "Correct answer. Good Job!"
-            stopTimer()
+            if self.wordindex == self.testWords.count {
+                //result = result + "\nQuiz Complete."
+                //print(result)
+                stopTimer()
+            }else{
+                nextButton.isHidden = false
+            }
         }else{
             result = "Wrong answer. Try again."
         }
@@ -133,13 +145,15 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.startButton.isHidden = true
         self.mandarinLabel.isHidden = false
         self.answerPicker.isHidden = false
+        /*
         self.submitButton.isHidden = false
-                
+        */
+        showNextWord()
         startTimer()
-
     }
     @IBAction func nextQuestion(_ sender: UIButton) {
-        
+        nextButton.isHidden = true
+        showNextWord()
     }
     func startTimer () {
         guard timer == nil else {return}
