@@ -26,8 +26,8 @@ Results : UIView (Modal)
 Tracking Items:
 - [ ] Automatic Layout 
 - [x] Buttons (Quiz view)
-- [ ] Sliders
-- [ ] Labels (Quiz view, Word Review view)
+- [x] Sliders
+- [x] Labels (Quiz view, Word Review view)
 - [x] Stepper (Word Review)
 - [ ] Switch
 - [x] Picker (you must implement picker delegate) (Quiz)
