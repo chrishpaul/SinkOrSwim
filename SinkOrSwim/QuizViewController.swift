@@ -54,7 +54,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         answerPicker.delegate = self
         answerPicker.dataSource = self
-        countdownLabel.text = "Time Remaining: " + String(countDown) + " s"
+        countDown = Int(timeSlider.value)
+        countdownLabel.text = String(countDown) + "s"
         resultLabel.isHidden = true
         
         //showNextWord()
@@ -88,7 +89,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         countDown -= 1
         var result = ""
         if countDown > 0 {
-            result = "Time Remaining: " + String(countDown) + " s"
+            result = String(countDown) + "s"
         }else{
             stopTimer()
             result = "Time's Up!"
@@ -112,6 +113,11 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     */
     
+    @IBOutlet weak var timeSlider: UISlider!
+    @IBAction func timeChanged(_ sender: UISlider) {
+        countDown = Int(sender.value)
+        countdownLabel.text = String(countDown) + "s"
+    }
     @IBAction func submitClicked(_ sender: UIButton) {
         let index = self.answerPicker.selectedRow(inComponent: 0)
         let englishWord = self.mandarinModel.getEnglishWord(at: index)
@@ -145,6 +151,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.startButton.isHidden = true
         self.mandarinLabel.isHidden = false
         self.answerPicker.isHidden = false
+        self.timeSlider.isHidden = true
         /*
         self.submitButton.isHidden = false
         */
