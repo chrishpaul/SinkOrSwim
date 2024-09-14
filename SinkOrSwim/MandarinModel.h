@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSArray*)getShuffledWords;
 -(UIImage*)getPicForEnglishWord:(NSString*)englishWord;
 -(UIImage*)getPictureForIndex:(NSInteger)index;
+-(NSArray*)getEnglishWords;
 
 @end
 

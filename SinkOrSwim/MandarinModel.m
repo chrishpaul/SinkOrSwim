@@ -103,6 +103,10 @@
     return [self.englishWords shuffledArray];
 }
 
+-(NSArray*)getEnglishWords{
+    return self.englishWords;
+}
+
 -(UIImage*)getPicForEnglishWord:(NSString*)englishWord{
     return self.pictureDict[englishWord];
 }
