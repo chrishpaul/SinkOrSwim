@@ -391,6 +391,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YOx-jz-kUE"/>
+                    <connections>
+                        <outlet property="imageView1" destination="0me-XP-aQ9" id="owT-PY-ekI"/>
+                        <outlet property="imageView2" destination="UkA-10-KHx" id="0gQ-YV-yuJ"/>
+                        <outlet property="imageView3" destination="Cf5-WU-SHW" id="0St-6x-xAW"/>
+                        <outlet property="imageView4" destination="Ndm-l1-kyv" id="WB8-ac-etY"/>
+                        <outlet property="imageView5" destination="oBT-E4-94c" id="9wX-F2-lR3"/>
+                        <outlet property="scrollView" destination="NcP-mJ-YfO" id="AGd-Mz-JGh"/>
+                        <outlet property="stackView" destination="llW-Qb-9in" id="IMb-3C-YSg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUR-tV-4Pq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

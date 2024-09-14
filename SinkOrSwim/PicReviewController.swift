@@ -7,12 +7,32 @@
 
 import UIKit
 
-class PicReviewController: UIViewController {
+class PicReviewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageView1: UIImageView!
+    @IBOutlet weak var imageView2: UIImageView!
+    @IBOutlet weak var imageView3: UIImageView!
+    @IBOutlet weak var imageView4: UIImageView!
+    @IBOutlet weak var imageView5: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageView1.image = UIImage(named: "weekend")
+        imageView2.image = UIImage(named: "dance")
+        imageView3.image = UIImage(named: "weekend")
+        imageView4.image = UIImage(named: "weekend")
+        imageView5.image = UIImage(named: "weekend")
+        
+        self.scrollView.delegate = self
+        self.scrollView.maximumZoomScale = 2.0
 
         // Do any additional setup after loading the view.
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.stackView
     }
     
 
