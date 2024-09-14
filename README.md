@@ -1,6 +1,6 @@
 A simple application to help students study Mandarin vocabulary words.
 
-LessonView : UITableView with 3 cell types
+Mandarin Tutor : UITableView with 3 cell types
   1) Mandarin words with English translation -> clicking navigates to 'WordView'
   2) Picture Dictionary cell -> clicking navigates to 'PictureDict'
   3) Quiz cell -> clicking navigates to 'Quiz'
@@ -33,10 +33,10 @@ Tracking Items:
 - [x] Picker (you must implement picker delegate) (Quiz)
 - [x] Segmented Control (Word Review)
 - [x] Timer (which should repeat and somehow update the UIView) (Quiz) (0.5pts)
-- [ ] ScrollView (with scrollable, zoomable content) (Word Review)
-- [ ] Image View (Word Review, Picture Dictionary)
+- [x] ScrollView (with scrollable, zoomable content) (Picture Review)
+- [x] Image View (Word Review, Picture Dictionary, Picture Review)
 - [x] Navigation Controller. Proper navigation (1pt)
-- [ ] Collection View Controller (Picture Dictionary)
+- [x] Collection View Controller (Picture Dictionary)
 - [ ] Table View Controller with three different dynamic prototype cells (Not hardcoded)
 - [ ] Type 1: English to Mandarin Word Cell
 - [ ] Type 2: Link to Quiz - would this be considered hard coding?
