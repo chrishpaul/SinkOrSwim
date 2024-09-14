@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSDictionary* mandarinDict;
 @property (strong, nonatomic) NSDictionary* pinyinDict;
 @property (strong, nonatomic) NSArray* englishWords;
+@property (strong, nonatomic) NSDictionary* pictureDict;
 
 @end
 
@@ -30,20 +31,20 @@
     
 }
 
-/*
- -(NSDictionary*) mandarinDict{
-    if(!_mandarinDict){
-        _mandarinDict = @{
-            @"weekend" : [UIImage imageNamed:@"Bill"],
-            @"movies" : [UIImage imageNamed:@"Eric"],
-            @"sing" : [UIImage imageNamed:@"Jeff"],
-            @"dance" : [UIImage imageNamed:@"hotdog"],
-            @"play ball" : [UIImage imageNamed:@"burger"]
+
+ -(NSDictionary*) pictureDict{
+    if(!_pictureDict){
+        _pictureDict = @{
+            @"weekend" : [UIImage imageNamed:@"weekend"],
+            @"movies" : [UIImage imageNamed:@"movies"],
+            @"sing" : [UIImage imageNamed:@"sing"],
+            @"dance" : [UIImage imageNamed:@"dance"],
+            @"play ball" : [UIImage imageNamed:@"play ball"]
         };
     }
-    return _mandarinDict;
+    return _pictureDict;
 }
-*/
+
 
 -(NSDictionary*) mandarinDict{
     if(!_mandarinDict){
@@ -102,5 +103,8 @@
     return [self.englishWords shuffledArray];
 }
 
+-(UIImage*)getPicForEnglishWord:(NSString*)englishWord{
+    return self.pictureDict[englishWord];
+}
 
 @end
