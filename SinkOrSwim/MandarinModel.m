@@ -107,4 +107,8 @@
     return self.pictureDict[englishWord];
 }
 
+-(UIImage*)getPictureForIndex:(NSInteger)index{
+    return self.pictureDict.allValues[index];
+}
+
 @end
