@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "CollectCell"
 
 class PicDictionaryControllerCollectionViewController: UICollectionViewController {
 
@@ -18,10 +18,14 @@ class PicDictionaryControllerCollectionViewController: UICollectionViewControlle
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
+    
+    lazy var mandarinModel = {
+        return MandarinModel.sharedInstance()
+    }()
 
     /*
     // MARK: - Navigation
@@ -37,21 +41,28 @@ class PicDictionaryControllerCollectionViewController: UICollectionViewControlle
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return mandarinModel.numberOfWords()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell{
+            var englishWord = mandarinModel.getEnglishWord(at: indexPath.row)
+            cell.englishLabel.text = englishWord
+            cell.mandarinLabel.text = mandarinModel.getMandarinForEnglish(englishWord)
+            cell.pinyinLabel.text = mandarinModel.getPinyinForEnglish(englishWord)
+            cell.picture.image = mandarinModel.getPicForEnglishWord(englishWord)
+            return cell
+        }else{
+            fatalError("Could not dequeue cell")
+        }
     
         // Configure the cell
-    
-        return cell
     }
 
     // MARK: UICollectionViewDelegate

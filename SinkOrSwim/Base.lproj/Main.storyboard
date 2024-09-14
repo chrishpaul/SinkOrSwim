@@ -302,19 +302,65 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h3q-YP-mvQ">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="177" height="218"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6qq-ST-Ch2">
-                                <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectCell" id="6qq-ST-Ch2" customClass="CollectionViewCell" customModule="SinkOrSwim" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="177" height="218"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wzd-f1-l4R">
-                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="177" height="218"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="wZi-zU-AvR">
+                                            <rect key="frame" x="0.0" y="0.0" width="177" height="108"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPz-ud-RrX">
+                                            <rect key="frame" x="0.0" y="190" width="177" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pinyin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOI-3s-Ok3">
+                                            <rect key="frame" x="0.0" y="160" width="177" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mandarin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeT-kW-8t4">
+                                            <rect key="frame" x="0.0" y="116" width="177" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="KPz-ud-RrX" firstAttribute="top" secondItem="kOI-3s-Ok3" secondAttribute="bottom" constant="9" id="CW1-QJ-aPO"/>
+                                        <constraint firstItem="kOI-3s-Ok3" firstAttribute="leading" secondItem="KPz-ud-RrX" secondAttribute="leading" id="D94-e9-YPP"/>
+                                        <constraint firstAttribute="trailing" secondItem="wZi-zU-AvR" secondAttribute="trailing" id="E33-mt-UM1"/>
+                                        <constraint firstAttribute="bottom" secondItem="KPz-ud-RrX" secondAttribute="bottom" constant="7" id="Eeg-ow-tDw"/>
+                                        <constraint firstItem="wZi-zU-AvR" firstAttribute="leading" secondItem="qeT-kW-8t4" secondAttribute="leading" id="Gy1-cO-rKD"/>
+                                        <constraint firstItem="kOI-3s-Ok3" firstAttribute="trailing" secondItem="KPz-ud-RrX" secondAttribute="trailing" id="MDc-Ii-Xj1"/>
+                                        <constraint firstItem="wZi-zU-AvR" firstAttribute="leading" secondItem="Wzd-f1-l4R" secondAttribute="leading" id="S04-wX-P17"/>
+                                        <constraint firstItem="wZi-zU-AvR" firstAttribute="top" secondItem="Wzd-f1-l4R" secondAttribute="top" id="cTs-g0-16j"/>
+                                        <constraint firstItem="qeT-kW-8t4" firstAttribute="top" secondItem="wZi-zU-AvR" secondAttribute="bottom" constant="8" symbolic="YES" id="f8v-Pp-Chl"/>
+                                        <constraint firstItem="wZi-zU-AvR" firstAttribute="trailing" secondItem="qeT-kW-8t4" secondAttribute="trailing" id="kE1-lp-S3H"/>
+                                        <constraint firstItem="kOI-3s-Ok3" firstAttribute="top" secondItem="qeT-kW-8t4" secondAttribute="bottom" constant="8" symbolic="YES" id="wg6-9j-vch"/>
+                                        <constraint firstItem="qeT-kW-8t4" firstAttribute="trailing" secondItem="kOI-3s-Ok3" secondAttribute="trailing" id="xFd-3W-Opm"/>
+                                        <constraint firstItem="qeT-kW-8t4" firstAttribute="leading" secondItem="kOI-3s-Ok3" secondAttribute="leading" id="xpQ-Hc-xIJ"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="177" height="218"/>
+                                <connections>
+                                    <outlet property="englishLabel" destination="KPz-ud-RrX" id="atG-FK-Zna"/>
+                                    <outlet property="mandarinLabel" destination="qeT-kW-8t4" id="2mB-HJ-b7Z"/>
+                                    <outlet property="picture" destination="wZi-zU-AvR" id="Fas-qz-LCQ"/>
+                                    <outlet property="pinyinLabel" destination="kOI-3s-Ok3" id="Slg-BN-0Bk"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -326,7 +372,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CWd-wm-y1a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="646"/>
+            <point key="canvasLocation" x="35.877862595419849" y="645.77464788732402"/>
         </scene>
     </scenes>
     <resources>
