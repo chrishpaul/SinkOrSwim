@@ -27,7 +27,7 @@ class TableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,10 +52,15 @@ class TableViewController: UITableViewController {
             cell.textLabel?.text = "Quiz"
             cell.textLabel?.textAlignment = NSTextAlignment.center
             return cell
-        }else{
+        }else if indexPath.section == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath)
             cell.textLabel?.textAlignment = NSTextAlignment.center
             cell.textLabel?.text = "Picture Dictionary"
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PicReviewCell", for: indexPath)
+            cell.textLabel?.textAlignment = NSTextAlignment.center
+            cell.textLabel?.text = "Picture Review"
             return cell
         }
     }
