@@ -13,12 +13,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var pinyinLabel: UILabel!
     @IBOutlet weak var englishLabel: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var wordNavigation: UIStepper!
     var englishWord = "English"
    
     lazy var mandarinModel: MandarinModel = {
         return MandarinModel.sharedInstance()
     }()
+    
+    /*
+    lazy private var imageView: UIImageView? = {
+        return UIImageView.init(image: self.mandarinModel.getPicForEnglishWord(englishWord))
+    }()
+    */
     
     /*lazy var wordIndex: Int = {
         return MandarinModel.sharedInstance().getIndexOfWord(englishWord)
@@ -36,6 +43,7 @@ class ViewController: UIViewController {
         englishLabel.text = englishWord
         mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         pinyinLabel.text = self.mandarinModel.getPinyinForEnglish(englishWord)
+        self.imageView.image = self.mandarinModel.getPicForEnglishWord(englishWord)
     }
 
     @IBAction func switchChanged(_ sender: UISegmentedControl) {
