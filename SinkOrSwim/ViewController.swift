@@ -76,5 +76,9 @@ class ViewController: UIViewController {
         englishWord = self.mandarinModel.getEnglishWord(at: index)
         setWords()
     }
+    
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        self.imageView.isHidden = !self.imageView.isHidden
+    }
 }
 

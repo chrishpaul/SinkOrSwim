@@ -191,6 +191,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pdx-3l-OlN">
+                                <rect key="frame" x="330" y="103" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="timerSwitchChanged:" destination="cHg-wv-XrQ" eventType="valueChanged" id="aM3-yz-fOW"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="61K-8X-2Qi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -204,7 +211,9 @@
                         <outlet property="resultLabel" destination="cAH-dz-q7X" id="3tE-n9-fsH"/>
                         <outlet property="startButton" destination="TC7-hh-Q1r" id="auG-2w-FAs"/>
                         <outlet property="submitButton" destination="wiR-gt-0Id" id="tBU-kS-fvq"/>
+                        <outlet property="timeRemainLabel" destination="jTC-K7-sxD" id="nO0-wW-ZP6"/>
                         <outlet property="timeSlider" destination="Q8p-tT-H6q" id="NbV-d7-Pmj"/>
+                        <outlet property="timerSwitch" destination="Pdx-3l-OlN" id="K4Y-X7-OBD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTC-uP-LgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -248,7 +257,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5H-gT-UQT">
-                                <rect key="frame" x="16" y="670" width="361" height="53"/>
+                                <rect key="frame" x="15" y="562" width="361" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -266,28 +275,35 @@
                                     <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="XQt-mS-rrb"/>
                                 </connections>
                             </segmentedControl>
-                            <stepper toolTip="Previous/Next Word" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-up-eKf">
-                                <rect key="frame" x="149.66666666666666" y="103" width="94" height="32"/>
+                            <stepper toolTip="Previous/Next Word" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OS2-up-eKf">
+                                <rect key="frame" x="148" y="630" width="94" height="32"/>
                                 <connections>
                                     <action selector="changeWord:" destination="BYZ-38-t0r" eventType="valueChanged" id="C6g-RW-UiS"/>
                                 </connections>
                             </stepper>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prev   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDw-Bq-UMc">
-                                <rect key="frame" x="102.33333333333333" y="109" width="47.333333333333329" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Prev   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDw-Bq-UMc">
+                                <rect key="frame" x="80" y="636" width="47.333333333333329" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egB-ww-bsU">
-                                <rect key="frame" x="243.66666666666663" y="103" width="149.33333333333337" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Next" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egB-ww-bsU">
+                                <rect key="frame" x="262" y="630" width="149.33333333333337" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4Nf-lY-VDf">
-                                <rect key="frame" x="0.0" y="187" width="393" height="202"/>
+                                <rect key="frame" x="0.0" y="135" width="393" height="202"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-YQ-Gp5" userLabel="PictureModeSwitch">
+                                <rect key="frame" x="330" y="96" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lee-am-56S"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -304,7 +320,7 @@
                             <constraint firstItem="OS2-up-eKf" firstAttribute="leading" secondItem="jDw-Bq-UMc" secondAttribute="trailing" id="Wnp-QH-mK3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K5H-gT-UQT" secondAttribute="bottom" constant="127" id="Z8i-Ef-Lhw"/>
                             <constraint firstItem="jDw-Bq-UMc" firstAttribute="centerY" secondItem="OS2-up-eKf" secondAttribute="centerY" id="eh0-Hb-MFv"/>
-                            <constraint firstItem="OS2-up-eKf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ehB-eC-wl2"/>
+                            <constraint firstItem="OS2-up-eKf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="527" id="ehB-eC-wl2"/>
                             <constraint firstItem="OS2-up-eKf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fgG-fC-5Yn"/>
                             <constraint firstItem="Grc-VX-U6k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="294" id="tL2-T6-0gg"/>
                             <constraint firstItem="egB-ww-bsU" firstAttribute="leading" secondItem="OS2-up-eKf" secondAttribute="trailing" id="xWC-mi-OY6"/>
