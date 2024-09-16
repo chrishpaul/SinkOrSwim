@@ -24,12 +24,12 @@ Results : UIView (Modal)
   2) Buttons to restart quiz or return to LessonView
  
 Tracking Items:
-- [ ] Automatic Layout 
+- [x] Automatic Layout 
 - [x] Buttons (Quiz view)
 - [x] Sliders
 - [x] Labels (Quiz view, Word Review view)
 - [x] Stepper (Word Review)
-- [ ] Switch
+- [x] Switch (Timed mode on Quiz view)
 - [x] Picker (you must implement picker delegate) (Quiz)
 - [x] Segmented Control (Word Review)
 - [x] Timer (which should repeat and somehow update the UIView) (Quiz) (0.5pts)
