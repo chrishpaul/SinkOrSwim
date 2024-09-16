@@ -77,8 +77,5 @@ class ViewController: UIViewController {
         setWords()
     }
     
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
-        self.imageView.isHidden = !self.imageView.isHidden
-    }
 }
 

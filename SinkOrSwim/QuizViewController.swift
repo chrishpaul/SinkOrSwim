@@ -14,6 +14,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var timedModeLabel: UILabel!
     @IBOutlet weak var timerSwitch: UISwitch!
     lazy var mandarinModel : MandarinModel = {
         return MandarinModel.sharedInstance();
@@ -157,6 +158,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.answerPicker.isHidden = false
         self.timeSlider.isHidden = true
         self.timerSwitch.isHidden = true
+        self.timedModeLabel.isHidden = true
         /*
         self.submitButton.isHidden = false
         */
