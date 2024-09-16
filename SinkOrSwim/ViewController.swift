@@ -76,5 +76,6 @@ class ViewController: UIViewController {
         englishWord = self.mandarinModel.getEnglishWord(at: index)
         setWords()
     }
+    
 }
 

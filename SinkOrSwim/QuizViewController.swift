@@ -14,6 +14,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    @IBOutlet weak var timedModeLabel: UILabel!
+    @IBOutlet weak var timerSwitch: UISwitch!
     lazy var mandarinModel : MandarinModel = {
         return MandarinModel.sharedInstance();
     }()
@@ -82,7 +84,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //mandarinLabel.isHidden = false
         //answerPicker.isHidden = false
         submitButton.isHidden = false
-        self.submitButton.isHidden = false
+        //self.submitButton.isHidden = false
     }
     
     @objc func countdownTimer(){
@@ -132,7 +134,10 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             if self.wordindex == self.testWords.count {
                 //result = result + "\nQuiz Complete."
                 //print(result)
-                stopTimer()
+                result = "Quiz Complete! Good Job!"
+                if self.timerSwitch.isOn{
+                    stopTimer()
+                }
             }else{
                 nextButton.isHidden = false
             }
@@ -144,7 +149,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeRemainLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBAction func startQuiz(_ sender: UIButton) {
@@ -152,11 +157,15 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.mandarinLabel.isHidden = false
         self.answerPicker.isHidden = false
         self.timeSlider.isHidden = true
+        self.timerSwitch.isHidden = true
+        self.timedModeLabel.isHidden = true
         /*
         self.submitButton.isHidden = false
         */
         showNextWord()
-        startTimer()
+        if self.timerSwitch.isOn{
+            startTimer()
+        }
     }
     @IBAction func nextQuestion(_ sender: UIButton) {
         nextButton.isHidden = true
@@ -172,4 +181,16 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         timer?.invalidate()
         timer = nil
     }
+    @IBAction func timerSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            self.timeSlider.isHidden = false
+            self.countdownLabel.isHidden = false
+            self.timeRemainLabel.isHidden = false
+        }else{
+            self.timeSlider.isHidden = true
+            self.countdownLabel.isHidden = true
+            self.timeRemainLabel.isHidden = true
+        }
+    }
+    
 }
