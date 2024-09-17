@@ -7,9 +7,13 @@
 
 import UIKit
 
-class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ResultsViewDelegate {
     
     
+
+    
+
+    @IBOutlet weak var viewRsultsButton: UIButton!
     @IBOutlet weak var mandarinLabel: UILabel!
     
     @IBOutlet weak var resultLabel: UILabel!
@@ -22,6 +26,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var timer : Timer?
     var wordindex : Int = 0
+    var correct : Int = 0
     
     lazy var testWords : NSArray = {
         if let testWords = self.mandarinModel.getShuffledWords() as NSArray?{
@@ -49,16 +54,47 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return self.mandarinModel.getEnglishWord(at: row)
     }
     
+    func didTapRestart() {
+        resetView()
+    }
+    
+    /*
+    @objc func presentResultsVC() {
+        let destinationVC = ResultsViewController()
+        destinationVC.delegate = self
+        
+        destinationVC.modalPresentationStyle = .pageSheet
+        present(destinationVC, animated: false)
+    }
+    */
 
     @IBOutlet weak var answerPicker: UIPickerView!
     
+    func resetView(){
+        countDown = Int(timeSlider.value)
+        countdownLabel.text = String(countDown) + "s"
+        resultLabel.isHidden = true
+        
+        self.submitButton.isHidden = true
+        self.answerPicker.isHidden = true
+        self.resultLabel.isHidden = true
+        
+        self.startButton.isHidden = false
+        self.viewRsultsButton.isHidden = true
+        self.mandarinLabel.isHidden = true
+        self.answerPicker.isHidden = true
+        self.timeSlider.isHidden = false
+        self.timerSwitch.isHidden = false
+        self.timedModeLabel.isHidden = false
+        
+        wordindex = 0
+        correct = 0
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         answerPicker.delegate = self
         answerPicker.dataSource = self
-        countDown = Int(timeSlider.value)
-        countdownLabel.text = String(countDown) + "s"
-        resultLabel.isHidden = true
+        resetView()
         
         //showNextWord()
         /*
@@ -98,6 +134,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             self.submitButton.isHidden = true
             self.answerPicker.isHidden = true
             self.resultLabel.isHidden = true
+            viewRsultsButton.isHidden = false
         }
         self.countdownLabel.text =  result
         //self.resultLabel.isHidden = false
@@ -105,15 +142,20 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? ResultsViewController{
+            vc.delegate = self
+            vc.correct = self.correct
+            vc.total = testWords.count
+        }
     }
-    */
+    
     
     @IBOutlet weak var timeSlider: UISlider!
     @IBAction func timeChanged(_ sender: UISlider) {
@@ -131,6 +173,8 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if answer == self.mandarinLabel.text{
             self.submitButton.isHidden = true
             result = "Correct answer. Good Job!"
+            correct += 1
+            print(correct)
             if self.wordindex == self.testWords.count {
                 //result = result + "\nQuiz Complete."
                 //print(result)
@@ -138,6 +182,9 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 if self.timerSwitch.isOn{
                     stopTimer()
                 }
+                viewRsultsButton.isHidden = false
+                
+                //presentResultsVC()
             }else{
                 nextButton.isHidden = false
             }
@@ -154,6 +201,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var countdownLabel: UILabel!
     @IBAction func startQuiz(_ sender: UIButton) {
         self.startButton.isHidden = true
+        self.viewRsultsButton.isHidden = true
         self.mandarinLabel.isHidden = false
         self.answerPicker.isHidden = false
         self.timeSlider.isHidden = true
