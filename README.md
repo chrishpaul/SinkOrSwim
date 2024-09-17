@@ -13,9 +13,9 @@ Lab 1 Tracking Items:
 - [x] Navigation Controller. Proper navigation (1pt)
 - [x] Collection View Controller (Picture Dictionary)
 - [ ] Table View Controller with three different dynamic prototype cells (Not hardcoded)
-- [ ]   Type 1: English to Mandarin Word Cell
-- [ ]   Type 2: Link to Quiz - would this be considered hard coding?
-- [ ]   Type 3: Link to Picture Dictionary with pictures - would this be considered hard coding?
+- [x]   Type 1: English to Mandarin Word Cell
+- [ ]   Type 2: ?? Maybe load pictures as cells?
+- [ ]   Type 3: ??
 - [x] The design should work in both portrait and landscape mode. Use size classes if necessary. (2 pts)
 - [ ] Tested for crashing
 - [x] Strictly adheres to Model View Controller programming practices. View should be agnostic to controller. Model should be agnostic to everything. (1pts)
