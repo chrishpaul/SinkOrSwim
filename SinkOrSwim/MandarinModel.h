@@ -22,7 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(UIImage*)getPicForEnglishWord:(NSString*)englishWord;
 //-(UIImage*)getPictureForIndex:(NSInteger)index;
 -(NSArray*)getEnglishWords;
--(void)doSomethingWithTheJson;
 
 @end
 
