@@ -11,14 +11,15 @@
 
 @interface MandarinModel()
 
-@property (strong, nonatomic) NSDictionary* mandarinDict;
-@property (strong, nonatomic) NSDictionary* pinyinDict;
+@property (strong, nonatomic) NSDictionary* lessonDict;
 @property (strong, nonatomic) NSArray* englishWords;
-@property (strong, nonatomic) NSDictionary* pictureDict;
+//@property (strong, nonatomic) NSString* lessonFile;
 
 @end
 
 @implementation MandarinModel
+
+NSString *const LESSON_FILE = @"TestData";
 
 +(MandarinModel*)sharedInstance{
     static MandarinModel* _sharedInstance = nil;
@@ -31,54 +32,29 @@
     
 }
 
-
- -(NSDictionary*) pictureDict{
-    if(!_pictureDict){
-        _pictureDict = @{
-            @"weekend" : [UIImage imageNamed:@"weekend"],
-            @"movies" : [UIImage imageNamed:@"movies"],
-            @"sing" : [UIImage imageNamed:@"sing"],
-            @"dance" : [UIImage imageNamed:@"dance"],
-            @"play ball" : [UIImage imageNamed:@"play ball"]
-        };
+/*
+-(NSString*)lessonFile{
+    if(!_lessonDict){
+        _lessonDict = [self loadLessonDict];
     }
-    return _pictureDict;
+    return _lessonDict;
+}*/
+
+-(NSDictionary*)lessonDict{
+    if(!_lessonDict){
+        _lessonDict = [self loadLessonDict];
+    }
+    return _lessonDict;
 }
 
-
--(NSDictionary*) mandarinDict{
-    if(!_mandarinDict){
-        _mandarinDict = @{
-            @"weekend" : @"周末",
-            @"movies" : @"电影",
-            @"sing" : @"唱歌",
-            @"dance" : @"舞蹈",
-            @"play ball" : @"打球"
-        };
-    }
-    return _mandarinDict;
-}
-
--(NSDictionary*) pinyinDict{
-    if(!_pinyinDict){
-        _pinyinDict = @{
-            @"weekend" : @"zhōumò",
-            @"movies" : @"diànyǐng",
-            @"sing" : @"chànggē",
-            @"dance" : @"wǔdǎo",
-            @"play ball" : @"dǎqiú"
-        };
-    }
-    return _pinyinDict;
-}
-
-- (NSInteger)numberOfWords {
-    return self.englishWords.count;
+-(NSInteger)numberOfWords {
+    return self.lessonDict.count;
+    //return self.englishWords.count;
 }
 
 -(NSArray*) englishWords{
     if(!_englishWords){
-        _englishWords = [self.mandarinDict allKeys];
+        _englishWords = [self.lessonDict allKeys];
     }
     return _englishWords;
 }
@@ -88,11 +64,13 @@
 }
 
 -(NSString*) getMandarinForEnglish:(NSString*)englishWord{
-    return self.mandarinDict[englishWord];
+    NSDictionary* dict = self.lessonDict[englishWord];
+    return dict[@"mandarin"];
 }
 
 -(NSString*) getPinyinForEnglish:(NSString*)englishWord{
-    return self.pinyinDict[englishWord];
+    NSDictionary* dict = self.lessonDict[englishWord];
+    return dict[@"pinyin"];
 }
 
 -(NSInteger)getIndexOfWord:(NSString*)englishWord{
@@ -108,11 +86,23 @@
 }
 
 -(UIImage*)getPicForEnglishWord:(NSString*)englishWord{
-    return self.pictureDict[englishWord];
+    NSDictionary* dict = self.lessonDict[englishWord];
+    NSString* picName = dict[@"picture"];
+    return [UIImage imageNamed:picName];
 }
 
--(UIImage*)getPictureForIndex:(NSInteger)index{
-    return self.pictureDict.allValues[index];
+-(id)readJSONFromFile
+{
+    //NSString *path = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:LESSON_FILE ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+}
+
+-(NSDictionary*)loadLessonDict
+{
+    NSDictionary* words = [self readJSONFromFile];
+    return words;
 }
 
 @end

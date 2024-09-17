@@ -1,0 +1,27 @@
+{
+    "weekend" : {
+        "mandarin" : "周末",
+        "pinyin" : "zhōumò",
+        "picture" : "weekend"
+    },
+    "movies" : {
+        "mandarin" : "电影",
+        "pinyin" : "diànyǐng",
+        "picture" : "movies"
+    },    
+    "sing" : {
+        "mandarin": "唱歌",
+        "pinyin": "chànggē",
+        "picture": "sing"
+    },
+    "dance" : {
+        "mandarin" : "舞蹈",
+        "pinyin" : "wǔdǎo",
+        "picture" : "dance"
+    },
+    "play ball" : {
+        "mandarin" : "打球",
+        "pinyin" : "dǎqiú",
+        "picture" : "play ball"
+    }
+}
