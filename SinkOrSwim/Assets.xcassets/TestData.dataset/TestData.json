@@ -1,0 +1,16 @@
+{
+    "lessonNum" : 1,
+    "name" : "recreation",
+    "words" : {
+        "dance" : {
+            "mandarin" : "11",
+            "pinyin" : "danzhe",
+            "picture" : "dance"
+        }
+        "sing" : {
+            "mandarin" : "12"
+            "pinyin" : "singzhe",
+            "picture" : "sing"
+        }
+    }
+}
