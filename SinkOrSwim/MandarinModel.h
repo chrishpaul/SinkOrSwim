@@ -20,8 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSInteger)getIndexOfWord:(NSString*)englishWord;
 -(NSArray*)getShuffledWords;
 -(UIImage*)getPicForEnglishWord:(NSString*)englishWord;
--(UIImage*)getPictureForIndex:(NSInteger)index;
+//-(UIImage*)getPictureForIndex:(NSInteger)index;
 -(NSArray*)getEnglishWords;
+-(void)doSomethingWithTheJson;
 
 @end
 

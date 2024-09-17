@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LessonWord : NSObject
 
+@property NSString* english;
+@property NSString* mandarin;
+@property NSString* pinyin;
+@property NSString* pictureFile;
+
 @end
 
 NS_ASSUME_NONNULL_END

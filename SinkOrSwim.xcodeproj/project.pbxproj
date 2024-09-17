@@ -18,6 +18,9 @@
 		84341A3B2C9226CC00F28CC7 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A3A2C9226CC00F28CC7 /* QuizViewController.swift */; };
 		84341A3D2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A3C2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift */; };
 		843D9ED12C98C0440031BB17 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D9ED02C98C0400031BB17 /* ResultsViewController.swift */; };
+		843D9EF52C9938850031BB17 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 843D9EF42C9938850031BB17 /* TestData.json */; };
+		843D9EF82C99FF730031BB17 /* LessonWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D9EF72C99FF730031BB17 /* LessonWord.m */; };
+		843D9EFA2C9A128A0031BB17 /* TestData2 in Resources */ = {isa = PBXBuildFile; fileRef = 843D9EF92C9A128A0031BB17 /* TestData2 */; };
 		845BD0202C926CB6006AC90F /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845BD01F2C926CB6006AC90F /* GameplayKit.framework */; };
 		84B4FD792C94CDD300673ADA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */; };
 		84B4FD7B2C95333E00673ADA /* PicReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4FD7A2C95333E00673ADA /* PicReviewController.swift */; };
@@ -39,6 +42,10 @@
 		84341A3A2C9226CC00F28CC7 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		84341A3C2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicDictionaryControllerCollectionViewController.swift; sourceTree = "<group>"; };
 		843D9ED02C98C0400031BB17 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		843D9EF42C9938850031BB17 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
+		843D9EF62C99FF730031BB17 /* LessonWord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonWord.h; sourceTree = "<group>"; };
+		843D9EF72C99FF730031BB17 /* LessonWord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonWord.m; sourceTree = "<group>"; };
+		843D9EF92C9A128A0031BB17 /* TestData2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestData2; sourceTree = "<group>"; };
 		845BD01F2C926CB6006AC90F /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		84B4FD7A2C95333E00673ADA /* PicReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicReviewController.swift; sourceTree = "<group>"; };
@@ -77,10 +84,13 @@
 		84341A1F2C91F4AE00F28CC7 /* SinkOrSwim */ = {
 			isa = PBXGroup;
 			children = (
+				843D9EF92C9A128A0031BB17 /* TestData2 */,
 				843D9ED02C98C0400031BB17 /* ResultsViewController.swift */,
 				84B4FD7A2C95333E00673ADA /* PicReviewController.swift */,
 				84341A372C91F87200F28CC7 /* MandarinModel.h */,
 				84341A382C91F87200F28CC7 /* MandarinModel.m */,
+				843D9EF62C99FF730031BB17 /* LessonWord.h */,
+				843D9EF72C99FF730031BB17 /* LessonWord.m */,
 				84341A202C91F4AE00F28CC7 /* AppDelegate.swift */,
 				84341A3C2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift */,
 				84341A222C91F4AE00F28CC7 /* SceneDelegate.swift */,
@@ -92,6 +102,7 @@
 				84341A292C91F4B000F28CC7 /* Assets.xcassets */,
 				84341A2B2C91F4B000F28CC7 /* LaunchScreen.storyboard */,
 				84341A2E2C91F4B000F28CC7 /* Info.plist */,
+				843D9EF42C9938850031BB17 /* TestData.json */,
 			);
 			path = SinkOrSwim;
 			sourceTree = "<group>";
@@ -163,7 +174,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843D9EF52C9938850031BB17 /* TestData.json in Resources */,
 				84341A2A2C91F4B000F28CC7 /* Assets.xcassets in Resources */,
+				843D9EFA2C9A128A0031BB17 /* TestData2 in Resources */,
 				84341A2D2C91F4B000F28CC7 /* Base in Resources */,
 				84341A282C91F4AE00F28CC7 /* Base in Resources */,
 			);
@@ -180,6 +193,7 @@
 				84341A252C91F4AE00F28CC7 /* ViewController.swift in Sources */,
 				84B4FD7B2C95333E00673ADA /* PicReviewController.swift in Sources */,
 				843D9ED12C98C0440031BB17 /* ResultsViewController.swift in Sources */,
+				843D9EF82C99FF730031BB17 /* LessonWord.m in Sources */,
 				84B4FD792C94CDD300673ADA /* CollectionViewCell.swift in Sources */,
 				84341A212C91F4AE00F28CC7 /* AppDelegate.swift in Sources */,
 				84341A392C91F87200F28CC7 /* MandarinModel.m in Sources */,
