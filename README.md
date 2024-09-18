@@ -12,10 +12,10 @@ Lab 1 Tracking Items:
 - [x] Image View (Word Review, Picture Dictionary, Picture Review)
 - [x] Navigation Controller. Proper navigation (1pt)
 - [x] Collection View Controller (Picture Dictionary)
-- [ ] Table View Controller with three different dynamic prototype cells (Not hardcoded)
+- [x] Table View Controller with three different dynamic prototype cells (Not hardcoded)
 - [x]   Type 1: English to Mandarin Word Cell
-- [ ]   Type 2: ?? Maybe load pictures as cells?
-- [ ]   Type 3: ??
+- [x]   Type 2: User Logo cell
+- [x]   Type 3: Pinyin and picture cells
 - [x] The design should work in both portrait and landscape mode. Use size classes if necessary. (2 pts)
 - [ ] Tested for crashing
 - [x] Strictly adheres to Model View Controller programming practices. View should be agnostic to controller. Model should be agnostic to everything. (1pts)
