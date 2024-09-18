@@ -52,7 +52,7 @@ class PicDictionaryControllerCollectionViewController: UICollectionViewControlle
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CollectionViewCell{
-            var englishWord = mandarinModel.getEnglishWord(at: indexPath.row)
+            let englishWord = mandarinModel.getEnglishWord(at: indexPath.row)
             cell.englishLabel.text = englishWord
             cell.mandarinLabel.text = mandarinModel.getMandarinForEnglish(englishWord)
             cell.pinyinLabel.text = mandarinModel.getPinyinForEnglish(englishWord)
