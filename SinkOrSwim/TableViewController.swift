@@ -56,7 +56,7 @@ class TableViewController: UITableViewController, UserSelectDelegate {
 
     func changeUserFor(index: Int) {
         print(index)
-        var indexPath = IndexPath(row: 0, section: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
         print(indexPath)
         self.setUserDetailsFor(index: index)
         tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
