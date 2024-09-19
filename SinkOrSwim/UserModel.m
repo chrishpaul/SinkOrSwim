@@ -119,4 +119,26 @@ NSString *const USER_FILE = @"UserData";
     return  self.userImage;
 }
 
+- (NSInteger)getNumberOfUsers {
+    return self.users.count;
+}
+
+- (nonnull NSString *)getLevelByIndex:(NSInteger)index {
+    NSDictionary* user = self.users[index];
+    return user[@"level"];
+}
+
+- (nonnull UIImage *)getUserImageByIndex:(NSInteger)index {
+    NSDictionary* user = self.users[index];
+    NSString* picName = user[@"picture"];
+    //NSLog(@"Picture Name: %@", picName);
+    return [UIImage imageNamed:picName];
+    
+}
+
+- (nonnull NSString *)getUserByIndex:(NSInteger)index {
+    NSDictionary* user = self.users[index];
+    return user[@"name"];
+}
+
 @end
