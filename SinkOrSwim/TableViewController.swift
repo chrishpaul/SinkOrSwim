@@ -21,12 +21,14 @@ class PinyinTableViewCell: UITableViewCell {
     @IBOutlet weak var pinyinImage: UIImageView!
 }
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, UserSelectDelegate {
 
     @IBOutlet var myTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setUserDetailsFor(index: 0)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,8 +48,20 @@ class TableViewController: UITableViewController {
         return MandarinModel.sharedInstance()
     }()
     
+    var userImage : UIImage?
+    var userName : String?
+    var userLevel : String?
+    
     // MARK: - Table view data source
 
+    func changeUserFor(index: Int) {
+        print(index)
+        var indexPath = IndexPath(row: 0, section: 0)
+        print(indexPath)
+        self.setUserDetailsFor(index: index)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 5
@@ -63,19 +77,29 @@ class TableViewController: UITableViewController {
         }
     }
 
+    func setUserDetailsFor(index : Int){
+        self.userName = self.userModel.getUserBy(index)
+        self.userLevel = self.userModel.getLevelBy(index)
+        self.userImage = self.userModel.getUserImage(by: index)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
+            print(indexPath)
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogoCell", for: indexPath) as! LogoTableViewCell
             cell.logoImage.layer.cornerRadius = 60
             cell.logoImage.layer.masksToBounds = true
             //cell.logoImage.image = UIImage(named: "alice")
-            cell.logoImage.image = self.userModel.getUserImage()
+            //cell.logoImage.image = self.userModel.getUserImage()
+            cell.logoImage.image = self.userImage
             let currentDate = Date.now
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             cell.logoDateLabel.text = formatter.string(from: currentDate)
-            cell.logoUsernameLabel.text = self.userModel.getUser()
-            cell.logoLevelLabel.text = self.userModel.getLevel()
+            //cell.logoUsernameLabel.text = self.userModel.getUser()
+            //cell.logoLevelLabel.text = self.userModel.getLevel()
+            cell.logoUsernameLabel.text = self.userName
+            cell.logoLevelLabel.text = self.userLevel
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
@@ -200,6 +224,8 @@ class TableViewController: UITableViewController {
            let cell = sender as? UITableViewCell,
            let englishWord = cell.textLabel?.text{
             vc.englishWord = englishWord
+        }else if let vc = segue.destination as? UserTableViewController{
+            vc.delegate = self
         }
     }
     

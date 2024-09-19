@@ -21,7 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)getUser;
 -(NSString*)getLevel;
 -(UIImage*)getUserImage;
-
+-(NSInteger)getNumberOfUsers;
+-(NSString*)getUserByIndex:(NSInteger)index;
+-(NSString*)getLevelByIndex:(NSInteger)index;
+-(UIImage*)getUserImageByIndex:(NSInteger)index;
 //-(UserModel*)changeUser;
 @end
 
