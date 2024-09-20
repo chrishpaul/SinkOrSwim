@@ -8,32 +8,23 @@
 import UIKit
 
 protocol UserSelectDelegate {
-    func changeUserFor(index : Int)
+    //func changeUserFor(index : Int)
+    func userChanged()
 }
 
 class UserTableViewController: UITableViewController {
     
+    var delegate : UserSelectDelegate?
+    
     lazy var userModel: UserModel = {
         return UserModel.sharedInstance()
     }()
-    
-    var delegate : UserSelectDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -43,7 +34,6 @@ class UserTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return self.userModel.getNumberOfUsers()
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LogoCell", for: indexPath) as! LogoTableViewCell
@@ -53,16 +43,14 @@ class UserTableViewController: UITableViewController {
         cell.logoImage.image = self.userModel.getUserImage(by: indexPath.row)
         cell.logoUsernameLabel.text = self.userModel.getUserBy(indexPath.row)
         cell.logoLevelLabel.text = self.userModel.getLevelBy(indexPath.row)
-        //cell.logoDateLabel.text = ""
-
-        // Configure the cell...
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("yay")
-        delegate?.changeUserFor(index: indexPath.row)
+        self.userModel.setCurrentUserTo(indexPath.row)
+        delegate?.userChanged();
+        //delegate?.changeUserFor(index: indexPath.row)
         dismiss(animated: true)
     }
 

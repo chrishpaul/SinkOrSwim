@@ -34,13 +34,10 @@ class PicReviewController: UIViewController, UIScrollViewDelegate {
     func addItem(englishWord : String){
         let picture = UIImageView.init(image: self.mandarinModel.getPicForEnglishWord(englishWord))
         picture.contentMode = .scaleAspectFit
-        picture.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        
         let label = UILabel()
         label.text = self.mandarinModel.getMandarinForEnglish(englishWord)
         label.textAlignment = .center
         label.font = label.font.withSize(36)
-        
         stackView.addArrangedSubview(picture)
         stackView.addArrangedSubview(label)
     }

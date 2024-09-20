@@ -11,9 +11,10 @@
 @interface UserModel()
 
 @property (strong, nonatomic) NSArray* users;
-@property (strong, nonatomic) NSString* currentUser;
-@property (strong, nonatomic) NSString* userLevel;
-@property (strong, nonatomic) UIImage* userImage;
+@property (nonatomic, assign) NSInteger currentUserIndex;
+//@property (strong, nonatomic) NSString* currentUser;
+//@property (strong, nonatomic) NSString* userLevel;
+//@property (strong, nonatomic) UIImage* userImage;
 
 @end
 
@@ -30,6 +31,13 @@ NSString *const USER_FILE = @"UserData";
     return _sharedInstance;
 }
 
+-(NSInteger)currentUserIndex{
+    if(!_currentUserIndex){
+        _currentUserIndex = 0;
+    }
+    return _currentUserIndex;
+}
+
 -(NSArray*)users{
     if(!_users){
         _users = [self loadUsers];
@@ -37,9 +45,11 @@ NSString *const USER_FILE = @"UserData";
     return _users;
 }
 
+/*
 -(NSString*)currentUser{
     if(!_currentUser){
-        [self setDefaultUser];
+        [self SetCurrentUserTo:self.currentUserIndex];
+        //[self setDefaultUser];
     }
     return _currentUser;
 }
@@ -65,6 +75,16 @@ NSString *const USER_FILE = @"UserData";
     NSString* picName = user[@"picture"];
     NSLog(@"Picture Name: %@", picName);
     _userImage = [UIImage imageNamed:picName];
+}
+*/
+
+-(void)setCurrentUserTo:(NSInteger)index{
+    self.currentUserIndex = index;
+    /*NSDictionary* user = self.users[index];
+    self.currentUser = user[@"name"];
+    self.userLevel = user[@"level"];
+    NSString* imageName = user[@"picture"];
+    self.userImage = [UIImage imageNamed:imageName];*/
 }
 
 /*
@@ -107,16 +127,20 @@ NSString *const USER_FILE = @"UserData";
 }
  */
 
-- (NSString*)getUser {
-    return self.currentUser;
+-(NSString*)getUsername {
+    NSDictionary* user = self.users[self.currentUserIndex];
+    return user[@"name"];
 }
 
-- (nonnull NSString *)getLevel {
-    return self.userLevel;
+-(NSString*)getLevel {
+    NSDictionary* user = self.users[self.currentUserIndex];
+    return user[@"level"];
 }
 
-- (UIImage *)getUserImage {
-    return  self.userImage;
+-(UIImage *)getUserImage {
+    NSDictionary* user = self.users[self.currentUserIndex];
+    NSString* picName = user[@"picture"];
+    return [UIImage imageNamed:picName];
 }
 
 - (NSInteger)getNumberOfUsers {
@@ -139,6 +163,11 @@ NSString *const USER_FILE = @"UserData";
 - (nonnull NSString *)getUserByIndex:(NSInteger)index {
     NSDictionary* user = self.users[index];
     return user[@"name"];
+}
+
+
+- (void)setUserIndex:(NSInteger)index {
+    self.currentUserIndex = index;
 }
 
 @end
