@@ -7,8 +7,9 @@
 
 import UIKit
 
-class LogoTableViewCell: UITableViewCell {
 
+class LogoTableViewCell: UITableViewCell {
+// This class is used to show user details (image, name, level)
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var logoUsernameLabel: UILabel!
     @IBOutlet weak var logoDateLabel: UILabel!
@@ -16,22 +17,15 @@ class LogoTableViewCell: UITableViewCell {
 }
 
 class PinyinTableViewCell: UITableViewCell {
-
+// This class is used to show a picture with the associated pinyin word
     @IBOutlet weak var pinyinLabel: UILabel!
     @IBOutlet weak var pinyinImage: UIImageView!
 }
 
 class TableViewController: UITableViewController, UserSelectDelegate {
-
     @IBOutlet var myTableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.setUserDetailsFor(index: 0)
 
-    }
-
+    // MARK: - Variables
     lazy var userModel: UserModel = {
         return UserModel.sharedInstance()
     }()
@@ -40,37 +34,19 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         return MandarinModel.sharedInstance()
     }()
     
-    //var userImage : UIImage?
-    //var userName : String?
-    //var userLevel : String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self.setUserDetailsFor(index: 0)
+    }
     
     // MARK: - Table view data source
 
-    
     func userChanged() {
         DispatchQueue.main.async {
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.automatic)
         }
     }
-    
-    /*
-    func changeUserFor(index: Int) {
-        /*print(index)
-        let indexPath = IndexPath(row: 0, section: 0)
-        print(indexPath)
-        self.setUserDetailsFor(index: index)*/
-        /*
-         dispatch_async(dispatch_get_main_queue(), ^{
-
-             UITableViewCell*cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        });
-        */
-        DispatchQueue.main.async {
-            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.automatic)
-        }
-    }
-    */
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -86,54 +62,45 @@ class TableViewController: UITableViewController, UserSelectDelegate {
             return 1
         }
     }
-
-    func setUserDetailsFor(index : Int){
-        
-        /*
-        self.userName = self.userModel.getUserBy(index)
-        self.userLevel = self.userModel.getLevelBy(index)
-        self.userImage = self.userModel.getUserImage(by: index)
-         */
-    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            print(indexPath)
+        if indexPath.section == 0 {         //Logo Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "LogoCell", for: indexPath) as! LogoTableViewCell
+            
+            //User Image setup
             cell.logoImage.layer.cornerRadius = 60
             cell.logoImage.layer.masksToBounds = true
-            //cell.logoImage.image = UIImage(named: "alice")
             cell.logoImage.image = self.userModel.getUserImage()
-            //cell.logoImage.image = self.userImage
+            
+            //Username and Level labels setup
+            cell.logoUsernameLabel.text = self.userModel.getUsername()
+            cell.logoLevelLabel.text = self.userModel.getLevel()
+            
+            //Date Label setup
             let currentDate = Date.now
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             cell.logoDateLabel.text = formatter.string(from: currentDate)
-            cell.logoUsernameLabel.text = self.userModel.getUsername()
-            cell.logoLevelLabel.text = self.userModel.getLevel()
-            //cell.logoUsernameLabel.text = self.userName
-            //cell.logoLevelLabel.text = self.userLevel
+
             return cell
-        }else if indexPath.section == 1 {
+        }else if indexPath.section == 1 {   //Vocabulary Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
             
             let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
             cell.textLabel?.text = englishWord
             cell.detailTextLabel?.text = self.mandarinModel.getMandarinForEnglish(englishWord)
-            
             return cell
-        }else if indexPath.section == 2{
+        }else if indexPath.section == 2{    //Quiz link
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
             cell.textLabel?.text = "Quiz"
             cell.textLabel?.textAlignment = NSTextAlignment.center
-            //cell.backgroundColor = .
             return cell
-        }else if indexPath.section == 3{
+        }else if indexPath.section == 3{    //Picture Dictionary Link
             let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath)
             cell.textLabel?.textAlignment = NSTextAlignment.center
             cell.textLabel?.text = "Picture Dictionary"
             return cell
-        }else{
+        }else{                              //Picture and Pinyin Section
             let cell = tableView.dequeueReusableCell(withIdentifier: "PinyinCell", for: indexPath) as! PinyinTableViewCell
             
             let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
@@ -142,106 +109,7 @@ class TableViewController: UITableViewController, UserSelectDelegate {
             
             return cell
         }
-        
-        /*else if indexPath.section == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
-            cell.textLabel?.text = "Quiz"
-            cell.textLabel?.textAlignment = NSTextAlignment.center
-            return cell
-
-        }else if indexPath.section == 5{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PicReviewCell", for: indexPath)
-            cell.textLabel?.textAlignment = NSTextAlignment.center
-            cell.textLabel?.text = "Picture Review"
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LogoCell", for: indexPath) as! LogoTableViewCell
-            cell.logoImage.layer.cornerRadius = 60
-            cell.logoImage.layer.masksToBounds = true
-            //cell.logoImage.image = UIImage(named: "alice")
-            cell.logoImage.image = self.userModel.getUserImage()
-            let currentDate = Date.now
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            cell.logoDateLabel.text = formatter.string(from: currentDate)
-            cell.logoUsernameLabel.text = self.userModel.getUser()
-            cell.logoLevelLabel.text = self.userModel.getLevel()
-            return cell
-        }*/
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
-            
-            let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
-            cell.textLabel?.text = englishWord
-            cell.detailTextLabel?.text = self.mandarinModel.getMandarinForEnglish(englishWord)
-            
-            return cell
-        }else if indexPath.section == 1{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
-            cell.textLabel?.text = "Quiz"
-            cell.textLabel?.textAlignment = NSTextAlignment.center
-            return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath)
-            cell.textLabel?.textAlignment = NSTextAlignment.center
-            cell.textLabel?.text = "Picture Dictionary"
-            return cell
-        }
-    }
-*/
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ViewController,
-           let cell = sender as? UITableViewCell,
-           let englishWord = cell.textLabel?.text{
-            vc.englishWord = englishWord
-        }else if let vc = segue.destination as? UserTableViewController{
-            vc.delegate = self
-        }
-    }
-    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection
                                 section: Int) -> String? {
@@ -250,5 +118,17 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         }
         return nil
     }
+    
+    // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Set  variables required by destination view controllers
+        if let vc = segue.destination as? ViewController,   //Destination is Word Review
+           let cell = sender as? UITableViewCell,
+           let englishWord = cell.textLabel?.text{
+            vc.englishWord = englishWord
+        }else if let vc = segue.destination as? UserTableViewController{    //Destination is User Selection
+            vc.delegate = self
+        }
+    }
 }
