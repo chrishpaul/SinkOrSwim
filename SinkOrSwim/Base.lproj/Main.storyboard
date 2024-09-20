@@ -153,14 +153,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PinyinCell" id="wbq-YH-pqN" customClass="PinyinTableViewCell" customModule="SinkOrSwim" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="300.33333969116211" width="393" height="150.66667175292969"/>
+                                <rect key="frame" x="0.0" y="300.33333969116211" width="393" height="151"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wbq-YH-pqN" id="VEg-hE-yWS">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="150.66667175292969"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pinyinLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEC-YL-wlk">
-                                            <rect key="frame" x="153.33333333333334" y="130" width="86.333333333333343" height="20.666666666666657"/>
+                                            <rect key="frame" x="153.33333333333334" y="130" width="86.333333333333343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -364,6 +364,7 @@
                         <outlet property="timeSlider" destination="Q8p-tT-H6q" id="NbV-d7-Pmj"/>
                         <outlet property="timedModeLabel" destination="ogZ-hN-EOZ" id="nFP-2W-931"/>
                         <outlet property="timerSwitch" destination="Pdx-3l-OlN" id="K4Y-X7-OBD"/>
+                        <outlet property="view2" destination="04t-lr-AsO" id="mhw-Fq-qjG"/>
                         <outlet property="viewRsultsButton" destination="k0s-Qr-nvG" id="IW7-vZ-7VY"/>
                     </connections>
                 </viewController>
