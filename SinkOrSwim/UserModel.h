@@ -15,13 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (strong, nonatomic) NSString* currentUser;
 //@property (strong, nonatomic) NSString* username;
 //@property (strong, nonatomic) NSString* dateString;
-@property (strong, nonatomic) NSString* level;
+//@property (strong, nonatomic) NSString* level;
 
 +(UserModel*)sharedInstance;
--(NSString*)getUser;
+-(NSString*)getUsername;
 -(NSString*)getLevel;
 -(UIImage*)getUserImage;
 -(NSInteger)getNumberOfUsers;
+-(void)setCurrentUserTo:(NSInteger)index;
+
+
 -(NSString*)getUserByIndex:(NSInteger)index;
 -(NSString*)getLevelByIndex:(NSInteger)index;
 -(UIImage*)getUserImageByIndex:(NSInteger)index;

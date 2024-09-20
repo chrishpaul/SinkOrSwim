@@ -30,14 +30,6 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         
         self.setUserDetailsFor(index: 0)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        //print(self.userModel.getUser())
-        //print(self.userModel.getLevel())
     }
 
     lazy var userModel: UserModel = {
@@ -48,19 +40,37 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         return MandarinModel.sharedInstance()
     }()
     
-    var userImage : UIImage?
-    var userName : String?
-    var userLevel : String?
+    //var userImage : UIImage?
+    //var userName : String?
+    //var userLevel : String?
     
     // MARK: - Table view data source
 
+    
+    func userChanged() {
+        DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.automatic)
+        }
+    }
+    
+    /*
     func changeUserFor(index: Int) {
-        print(index)
+        /*print(index)
         let indexPath = IndexPath(row: 0, section: 0)
         print(indexPath)
-        self.setUserDetailsFor(index: index)
-        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        self.setUserDetailsFor(index: index)*/
+        /*
+         dispatch_async(dispatch_get_main_queue(), ^{
+
+             UITableViewCell*cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        });
+        */
+        DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.automatic)
+        }
     }
+    */
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -78,9 +88,12 @@ class TableViewController: UITableViewController, UserSelectDelegate {
     }
 
     func setUserDetailsFor(index : Int){
+        
+        /*
         self.userName = self.userModel.getUserBy(index)
         self.userLevel = self.userModel.getLevelBy(index)
         self.userImage = self.userModel.getUserImage(by: index)
+         */
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,16 +103,16 @@ class TableViewController: UITableViewController, UserSelectDelegate {
             cell.logoImage.layer.cornerRadius = 60
             cell.logoImage.layer.masksToBounds = true
             //cell.logoImage.image = UIImage(named: "alice")
-            //cell.logoImage.image = self.userModel.getUserImage()
-            cell.logoImage.image = self.userImage
+            cell.logoImage.image = self.userModel.getUserImage()
+            //cell.logoImage.image = self.userImage
             let currentDate = Date.now
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             cell.logoDateLabel.text = formatter.string(from: currentDate)
-            //cell.logoUsernameLabel.text = self.userModel.getUser()
-            //cell.logoLevelLabel.text = self.userModel.getLevel()
-            cell.logoUsernameLabel.text = self.userName
-            cell.logoLevelLabel.text = self.userLevel
+            cell.logoUsernameLabel.text = self.userModel.getUsername()
+            cell.logoLevelLabel.text = self.userModel.getLevel()
+            //cell.logoUsernameLabel.text = self.userName
+            //cell.logoLevelLabel.text = self.userLevel
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VocabCell", for: indexPath)
