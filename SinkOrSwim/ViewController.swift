@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  SinkOrSwim
 //
-//  Created by Chrishnika Paul on 9/11/24.
-//
 
 import UIKit
 

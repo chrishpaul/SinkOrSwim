@@ -2,8 +2,6 @@
 //  MandarinModel.m
 //  SinkOrSwim
 //
-//  Created by Chrishnika Paul on 9/11/24.
-//
 
 #import "MandarinModel.h"
 #import "UIKit/UIKit.h"

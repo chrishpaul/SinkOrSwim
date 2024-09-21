@@ -2,8 +2,6 @@
 //  UserModel.h
 //  SinkOrSwim
 //
-//  Created by Chrishnika Paul on 9/18/24.
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

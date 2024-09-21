@@ -2,8 +2,6 @@
 //  UserTableViewController.swift
 //  SinkOrSwim
 //
-//  Created by Chrishnika Paul on 9/18/24.
-//
 
 import UIKit
 
