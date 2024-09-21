@@ -8,10 +8,13 @@
 import UIKit
 
 class PicReviewController: UIViewController, UIScrollViewDelegate {
+    // Subclass of UIViewController for scrollable, zoomable Picture Review view
 
+    // MARK: Outlets
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
 
+    // MARK: Variables
     lazy var mandarinModel = {
         return MandarinModel.sharedInstance()
     }()
@@ -19,10 +22,12 @@ class PicReviewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Call addItem to add all words to a stackview
         for word in (self.mandarinModel.getEnglishWords() as NSArray as! [String]) {
             addItem(englishWord: word)
         }
         
+        // Setup for scrollView
         self.scrollView.delegate = self
         self.scrollView.maximumZoomScale = 2.0
         self.scrollView.minimumZoomScale = 0.1
@@ -32,29 +37,25 @@ class PicReviewController: UIViewController, UIScrollViewDelegate {
     }
     
     func addItem(englishWord : String){
-        let picture = UIImageView.init(image: self.mandarinModel.getPicForEnglishWord(englishWord))
+        // Function to add an image and corresponding Mandarin word to a stackView
+        
+        // Fetch and configure image
+        let picture = UIImageView.init(image: self.mandarinModel.getPicFor(englishWord))
         picture.contentMode = .scaleAspectFit
+        
+        // Configure label
         let label = UILabel()
-        label.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+        label.text = self.mandarinModel.getMandarinFor(englishWord)
         label.textAlignment = .center
         label.font = label.font.withSize(36)
+        
+        // Add items to stackview
         stackView.addArrangedSubview(picture)
         stackView.addArrangedSubview(label)
     }
     
+    // MARK: UIScrollViewDelegate Function
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.stackView
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

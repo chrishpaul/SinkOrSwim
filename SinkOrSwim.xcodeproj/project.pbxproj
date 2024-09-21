@@ -68,9 +68,9 @@
 		84341A142C91F4AD00F28CC7 = {
 			isa = PBXGroup;
 			children = (
+				84341A362C91F87100F28CC7 /* SinkOrSwim-Bridging-Header.h */,
 				84341A1F2C91F4AE00F28CC7 /* SinkOrSwim */,
 				84341A1E2C91F4AE00F28CC7 /* Products */,
-				84341A362C91F87100F28CC7 /* SinkOrSwim-Bridging-Header.h */,
 				845BD01E2C926CB6006AC90F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -86,26 +86,26 @@
 		84341A1F2C91F4AE00F28CC7 /* SinkOrSwim */ = {
 			isa = PBXGroup;
 			children = (
+				84341A202C91F4AE00F28CC7 /* AppDelegate.swift */,
+				84341A222C91F4AE00F28CC7 /* SceneDelegate.swift */,
+				84341A342C91F64C00F28CC7 /* TableViewController.swift */,
+				843CF9BB2C9B8612002682F1 /* UserTableViewController.swift */,
+				84341A242C91F4AE00F28CC7 /* ViewController.swift */,
+				84341A3A2C9226CC00F28CC7 /* QuizViewController.swift */,
+				843D9ED02C98C0400031BB17 /* ResultsViewController.swift */,
+				84341A3C2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift */,
+				84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */,
+				84B4FD7A2C95333E00673ADA /* PicReviewController.swift */,
 				843D9EFD2C9B3B4C0031BB17 /* UserModel.h */,
 				843D9EFE2C9B3B4C0031BB17 /* UserModel.m */,
-				843D9ED02C98C0400031BB17 /* ResultsViewController.swift */,
-				84B4FD7A2C95333E00673ADA /* PicReviewController.swift */,
 				84341A372C91F87200F28CC7 /* MandarinModel.h */,
 				84341A382C91F87200F28CC7 /* MandarinModel.m */,
-				84341A202C91F4AE00F28CC7 /* AppDelegate.swift */,
-				84341A3C2C92271400F28CC7 /* PicDictionaryControllerCollectionViewController.swift */,
-				84341A222C91F4AE00F28CC7 /* SceneDelegate.swift */,
-				84341A3A2C9226CC00F28CC7 /* QuizViewController.swift */,
-				84341A342C91F64C00F28CC7 /* TableViewController.swift */,
-				84341A242C91F4AE00F28CC7 /* ViewController.swift */,
+				843D9EF42C9938850031BB17 /* TestData.json */,
+				843D9F002C9B3F3F0031BB17 /* UserData.json */,
 				84341A262C91F4AE00F28CC7 /* Main.storyboard */,
-				843CF9BB2C9B8612002682F1 /* UserTableViewController.swift */,
-				84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */,
 				84341A292C91F4B000F28CC7 /* Assets.xcassets */,
 				84341A2B2C91F4B000F28CC7 /* LaunchScreen.storyboard */,
 				84341A2E2C91F4B000F28CC7 /* Info.plist */,
-				843D9EF42C9938850031BB17 /* TestData.json */,
-				843D9F002C9B3F3F0031BB17 /* UserData.json */,
 			);
 			path = SinkOrSwim;
 			sourceTree = "<group>";
