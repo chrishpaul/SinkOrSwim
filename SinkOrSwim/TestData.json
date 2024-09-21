@@ -19,6 +19,31 @@
         "pinyin" : "wǔdǎo",
         "picture" : "dance"
     },
+    "family" : {
+        "mandarin" : "家庭",
+        "pinyin" : "jiātíng",
+        "picture" : "family"
+    },
+    "school" : {
+        "mandarin" : "学校",
+        "pinyin" : "xuéxiào",
+        "picture" : "school"
+    },
+    "learn" : {
+        "mandarin" : "学习",
+        "pinyin" : "xuéxí",
+        "picture" : "learn"
+    },
+    "read" : {
+        "mandarin" : "读",
+        "pinyin" : "dú",
+        "picture" : "read"
+    },
+    "book" : {
+        "mandarin" : "书",
+        "pinyin" : "shū",
+        "picture" : "book"
+    },
     "play ball" : {
         "mandarin" : "打球",
         "pinyin" : "dǎqiú",
