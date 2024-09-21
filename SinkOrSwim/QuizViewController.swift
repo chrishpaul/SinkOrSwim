@@ -154,6 +154,19 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //MARK: IBActions
     
+    @IBAction func timerSwitchChanged(_ sender: UISwitch) {
+        // Function that handles UI updates based on timer swiitch state
+        if sender.isOn {
+            self.timeSlider.isHidden = false
+            self.countdownLabel.isHidden = false
+            self.timeRemainLabel.isHidden = false
+        }else{
+            self.timeSlider.isHidden = true
+            self.countdownLabel.isHidden = true
+            self.timeRemainLabel.isHidden = true
+        }
+    }
+    
     @IBAction func timeChanged(_ sender: UISlider) {
         // Update countdown value and displayed value based on slider value
         countDown = Int(sender.value)
@@ -219,18 +232,5 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Function that handles nextQuestion button being clicked
         nextButton.isHidden = true
         showNextWord()
-    }
-
-    @IBAction func timerSwitchChanged(_ sender: UISwitch) {
-        // Function that handles UI updates based on timer swiitch state
-        if sender.isOn {
-            self.timeSlider.isHidden = false
-            self.countdownLabel.isHidden = false
-            self.timeRemainLabel.isHidden = false
-        }else{
-            self.timeSlider.isHidden = true
-            self.countdownLabel.isHidden = true
-            self.timeRemainLabel.isHidden = true
-        }
     }
 }
