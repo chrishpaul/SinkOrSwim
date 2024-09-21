@@ -79,7 +79,7 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         // Gets and displays next word
         if let englishWord = self.testWords[wordindex] as? String{
-            mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+            mandarinLabel.text = self.mandarinModel.getMandarinFor(englishWord)
         }
         wordindex += 1              // Increment word index
         
@@ -181,16 +181,14 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Look up the Mandarin word for the selected answer from UIPicker
         let index = self.answerPicker.selectedRow(inComponent: 0)
         let englishWord = self.mandarinModel.getEnglishWord(at: index)
-        let answer = self.mandarinModel.getMandarinForEnglish(englishWord)
+        let answer = self.mandarinModel.getMandarinFor(englishWord)
         
         // Compare the selected word to the correct answer
         if answer == self.mandarinLabel.text{               // Correct answer submitted
-            // Show result and increment correct answer counter
-            self.submitButton.isHidden = true
-            result = "Correct answer. Good Job!"
-            correct += 1
-            print(correct)
-            if self.wordindex == self.testWords.count {     // End of the word list has been reached
+            self.submitButton.isHidden = true               // Hide submit button
+            result = "Correct answer. Good Job!"            // Set text for correct answer
+            correct += 1                                    // Increment correct answer counter
+            if self.wordindex == self.testWords.count {     // End of list reached
                 result = "Quiz Complete! Good Job!"
                 if self.timerSwitch.isOn{                   // Handle timed mode
                     stopTimer()

@@ -39,9 +39,9 @@ class PicDictionaryControllerCollectionViewController: UICollectionViewControlle
             
             // Set up view
             cell.englishLabel.text = englishWord
-            cell.mandarinLabel.text = mandarinModel.getMandarinForEnglish(englishWord)
-            cell.pinyinLabel.text = mandarinModel.getPinyinForEnglish(englishWord)
-            cell.picture.image = mandarinModel.getPicForEnglishWord(englishWord)
+            cell.mandarinLabel.text = mandarinModel.getMandarinFor(englishWord)
+            cell.pinyinLabel.text = mandarinModel.getPinyinFor(englishWord)
+            cell.picture.image = mandarinModel.getPicFor(englishWord)
             return cell
         }else{      // Unexpected case
             fatalError("Could not dequeue cell")

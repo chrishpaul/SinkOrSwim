@@ -11,17 +11,18 @@
 
 @interface MandarinModel()
 
-@property (strong, nonatomic) NSDictionary* lessonDict;
-@property (strong, nonatomic) NSArray* englishWords;
-//@property (strong, nonatomic) NSString* lessonFile;
+@property (strong, nonatomic) NSDictionary* lessonDict;     // Dictionary of words in lesson
+@property (strong, nonatomic) NSArray* englishWords;        // Array of English words in lesson
 
 @end
 
 @implementation MandarinModel
 
-NSString *const LESSON_FILE = @"TestData";
+NSString *const LESSON_FILE = @"TestData";      // Name of JSON file containing words in lesson
 
 +(MandarinModel*)sharedInstance{
+    // Returns shared instance for MandarinModel following singleton pattern
+
     static MandarinModel* _sharedInstance = nil;
     static dispatch_once_t predicate;
     
@@ -32,27 +33,20 @@ NSString *const LESSON_FILE = @"TestData";
     
 }
 
-/*
--(NSString*)lessonFile{
-    if(!_lessonDict){
-        _lessonDict = [self loadLessonDict];
-    }
-    return _lessonDict;
-}*/
+// MARK: Getters
 
 -(NSDictionary*)lessonDict{
+    // Getter for lessonDict
+    
     if(!_lessonDict){
         _lessonDict = [self loadLessonDict];
     }
     return _lessonDict;
 }
 
--(NSInteger)numberOfWords {
-    return self.lessonDict.count;
-    //return self.englishWords.count;
-}
-
--(NSArray*) englishWords{
+-(NSArray*)englishWords{
+    // Getter for englishWords
+    
     if(!_englishWords){
         _englishWords = [self.lessonDict allKeys];
     }
@@ -60,49 +54,73 @@ NSString *const LESSON_FILE = @"TestData";
 }
 
 -(NSString*) getEnglishWordAt:(NSInteger)index{
+    // Returns English word at provided index
+    
     return self.englishWords[index];
 }
 
--(NSString*) getMandarinForEnglish:(NSString*)englishWord{
+-(NSString*) getMandarinFor:(NSString*)englishWord{
+    // Returns Mandarin translation for provided English word
+    
     NSDictionary* dict = self.lessonDict[englishWord];
     return dict[@"mandarin"];
 }
 
--(NSString*) getPinyinForEnglish:(NSString*)englishWord{
+-(NSString*) getPinyinFor:(NSString*)englishWord{
+    // Returns pinyin form for provided English word
+    
     NSDictionary* dict = self.lessonDict[englishWord];
     return dict[@"pinyin"];
 }
 
--(NSInteger)getIndexOfWord:(NSString*)englishWord{
-    return (NSInteger)[self.englishWords indexOfObject:englishWord];
-}
-
--(NSArray*)getShuffledWords{
-    return [self.englishWords shuffledArray];
-}
-
--(NSArray*)getEnglishWords{
-    return self.englishWords;
-}
-
--(UIImage*)getPicForEnglishWord:(NSString*)englishWord{
+-(UIImage*)getPicFor:(NSString*)englishWord{
+    // Returns image associated with provided English word
+    
     NSDictionary* dict = self.lessonDict[englishWord];
     NSString* picName = dict[@"picture"];
     return [UIImage imageNamed:picName];
 }
 
+-(NSInteger)numberOfWords {
+    // Returns number of words in lesson
+    
+    return self.lessonDict.count;
+}
+
+-(NSInteger)getIndexOfWord:(NSString*)englishWord{
+    // Returns index of provided English word
+    
+    return (NSInteger)[self.englishWords indexOfObject:englishWord];
+}
+
+-(NSArray*)getEnglishWords{
+    // Returns list of English words in lesson
+    
+    return self.englishWords;
+}
+
+-(NSArray*)getShuffledWords{
+    // Returns a shuffled list of English words
+    
+    return [self.englishWords shuffledArray];
+}
+
+// MARK: Helper functions
+-(NSDictionary*)loadLessonDict
+{
+    // Loads lesson data from JSON file
+    
+    NSDictionary* words = [self readJSONFromFile];
+    return words;
+}
+
 -(id)readJSONFromFile
 {
-    //NSString *path = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"json"];
+    // Reads JSON from file
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:LESSON_FILE ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-}
-
--(NSDictionary*)loadLessonDict
-{
-    NSDictionary* words = [self readJSONFromFile];
-    return words;
 }
 
 @end

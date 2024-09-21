@@ -37,9 +37,9 @@ class ViewController: UIViewController {
     func setWords() {
         // Function to setup view
         englishLabel.text = englishWord
-        mandarinLabel.text = self.mandarinModel.getMandarinForEnglish(englishWord)
-        pinyinLabel.text = self.mandarinModel.getPinyinForEnglish(englishWord)
-        self.imageView.image = self.mandarinModel.getPicForEnglishWord(englishWord)
+        mandarinLabel.text = self.mandarinModel.getMandarinFor(englishWord)
+        pinyinLabel.text = self.mandarinModel.getPinyinFor(englishWord)
+        self.imageView.image = self.mandarinModel.getPicFor(englishWord)
     }
 
     @IBAction func switchChanged(_ sender: UISegmentedControl) {

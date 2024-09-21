@@ -10,19 +10,18 @@
 
 @interface UserModel()
 
-@property (strong, nonatomic) NSArray* users;
-@property (nonatomic, assign) NSInteger currentUserIndex;
-//@property (strong, nonatomic) NSString* currentUser;
-//@property (strong, nonatomic) NSString* userLevel;
-//@property (strong, nonatomic) UIImage* userImage;
+@property (strong, nonatomic) NSArray* users;               // Array of available users
+@property (nonatomic, assign) NSInteger currentUserIndex;   // Index of current user in users array
 
 @end
 
 @implementation UserModel
 
-NSString *const USER_FILE = @"UserData";
+NSString *const USER_FILE = @"UserData";                    // JSON filename for user configuration
 
 + (nonnull UserModel *)sharedInstance {
+    // Returns shared instance for user model following singleton pattern
+    
     static UserModel* _sharedInstance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -31,143 +30,98 @@ NSString *const USER_FILE = @"UserData";
     return _sharedInstance;
 }
 
+// MARK: Getters
 -(NSInteger)currentUserIndex{
+    // Getter for currentUserIndex property
+    
     if(!_currentUserIndex){
-        _currentUserIndex = 0;
+        _currentUserIndex = 0;      // Default index value is 0
     }
     return _currentUserIndex;
 }
 
 -(NSArray*)users{
+    // Getter for users property
+    
     if(!_users){
-        _users = [self loadUsers];
+        _users = [self loadUsers];  // Load users if nil
     }
     return _users;
 }
 
-/*
--(NSString*)currentUser{
-    if(!_currentUser){
-        [self SetCurrentUserTo:self.currentUserIndex];
-        //[self setDefaultUser];
-    }
-    return _currentUser;
-}
-
--(NSString*)userLevel{
-    if(!_userLevel){
-        [self setDefaultUser];
-    }
-    return _userLevel;
-}
-
--(UIImage*)userImage{
-    if(!_userImage){
-        [self setDefaultUser];
-    }
-    return _userImage;
-}
-
--(void)setDefaultUser{
-    NSDictionary* user = self.users[0];
-    _currentUser = user[@"name"];
-    _userLevel = user[@"level"];
-    NSString* picName = user[@"picture"];
-    NSLog(@"Picture Name: %@", picName);
-    _userImage = [UIImage imageNamed:picName];
-}
-*/
-
--(void)setCurrentUserTo:(NSInteger)index{
-    self.currentUserIndex = index;
-    /*NSDictionary* user = self.users[index];
-    self.currentUser = user[@"name"];
-    self.userLevel = user[@"level"];
-    NSString* imageName = user[@"picture"];
-    self.userImage = [UIImage imageNamed:imageName];*/
-}
-
-/*
--(NSString*)username{
-    if(!_username){
-        NSDictionary* user = self.users[0];
-        _username = user[@"name"];
-    }
-    return _currentUser;
-}
-*/
-/*
-- (nonnull UserModel *)changeUser {
-    return nil;
-}
-*/
-
--(NSArray*)loadUsers
-{
-    NSDictionary* userFile = [self readUsersFromFile];
-    //NSNumber* lastUser = userFile[@"lastUser"];
-    NSArray* users = userFile[@"users"];
-    //NSDictionary* currentUser = users[lastUser];
-    //NSLog(@"Last User: %@", lastUser);
-    NSLog(@"First User: %@", users[0]);
-    return users;
-}
-
--(id)readUsersFromFile
-{
-    //NSString *path = [[NSBundle mainBundle] pathForResource:@"TestData" ofType:@"json"];
-    NSString *path = [[NSBundle mainBundle] pathForResource:USER_FILE ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-}
-
-/*
-- (nonnull UserModel *)getUser {
-    return nil;
-}
- */
-
 -(NSString*)getUsername {
+    // Returns current username
+    
     NSDictionary* user = self.users[self.currentUserIndex];
     return user[@"name"];
 }
 
 -(NSString*)getLevel {
+    // Returns current user's level
+    
     NSDictionary* user = self.users[self.currentUserIndex];
     return user[@"level"];
 }
 
 -(UIImage *)getUserImage {
+    // Returns current user's image
+    
     NSDictionary* user = self.users[self.currentUserIndex];
     NSString* picName = user[@"picture"];
     return [UIImage imageNamed:picName];
 }
 
 - (NSInteger)getNumberOfUsers {
+    // Returns number of users
+    
     return self.users.count;
 }
 
-- (nonnull NSString *)getLevelByIndex:(NSInteger)index {
-    NSDictionary* user = self.users[index];
-    return user[@"level"];
-}
-
-- (nonnull UIImage *)getUserImageByIndex:(NSInteger)index {
-    NSDictionary* user = self.users[index];
-    NSString* picName = user[@"picture"];
-    //NSLog(@"Picture Name: %@", picName);
-    return [UIImage imageNamed:picName];
+- (nonnull NSString *)getUserBy:(NSInteger)index {
+    // Returns username by user index number
     
-}
-
-- (nonnull NSString *)getUserByIndex:(NSInteger)index {
     NSDictionary* user = self.users[index];
     return user[@"name"];
 }
 
+- (nonnull NSString *)getLevelBy:(NSInteger)index {
+    // Returns user's level by user index number
+    
+    NSDictionary* user = self.users[index];
+    return user[@"level"];
+}
 
-- (void)setUserIndex:(NSInteger)index {
+- (nonnull UIImage *)getUserImageBy:(NSInteger)index {
+    // Returns users's image by user index number
+    
+    NSDictionary* user = self.users[index];
+    NSString* picName = user[@"picture"];
+    return [UIImage imageNamed:picName];
+}
+
+// MARK: Setters
+-(void)setCurrentUserTo:(NSInteger)index{
+    // Sets currentUserIndex to provided value
+    
     self.currentUserIndex = index;
+}
+
+-(NSArray*)loadUsers
+{
+    // Loads user data into array
+    
+    NSDictionary* userFile = [self readUsersFromFile];
+    NSArray* users = userFile[@"users"];
+    return users;
+}
+
+-(id)readUsersFromFile
+{
+    // Reads JSON from file
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:USER_FILE ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
 }
 
 @end

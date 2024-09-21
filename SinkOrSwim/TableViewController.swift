@@ -88,7 +88,7 @@ class TableViewController: UITableViewController, UserSelectDelegate {
             
             let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
             cell.textLabel?.text = englishWord
-            cell.detailTextLabel?.text = self.mandarinModel.getMandarinForEnglish(englishWord)
+            cell.detailTextLabel?.text = self.mandarinModel.getMandarinFor(englishWord)
             return cell
         }else if indexPath.section == 2{    //Quiz link
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath)
@@ -104,8 +104,8 @@ class TableViewController: UITableViewController, UserSelectDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PinyinCell", for: indexPath) as! PinyinTableViewCell
             
             let englishWord = self.mandarinModel.getEnglishWord(at: indexPath.row)
-            cell.pinyinLabel.text =  self.mandarinModel.getPinyinForEnglish(englishWord)
-            cell.pinyinImage.image = self.mandarinModel.getPicForEnglishWord(englishWord)
+            cell.pinyinLabel.text =  self.mandarinModel.getPinyinFor(englishWord)
+            cell.pinyinImage.image = self.mandarinModel.getPicFor(englishWord)
             
             return cell
         }

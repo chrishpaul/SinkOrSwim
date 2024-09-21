@@ -12,23 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserModel : NSObject
 
-//@property (strong, nonatomic) NSString* currentUser;
-//@property (strong, nonatomic) NSString* username;
-//@property (strong, nonatomic) NSString* dateString;
-//@property (strong, nonatomic) NSString* level;
-
 +(UserModel*)sharedInstance;
--(NSString*)getUsername;
--(NSString*)getLevel;
--(UIImage*)getUserImage;
--(NSInteger)getNumberOfUsers;
--(void)setCurrentUserTo:(NSInteger)index;
+-(NSString*)getUsername;                    // Get current username
+-(NSString*)getLevel;                       // Get current user's level
+-(UIImage*)getUserImage;                    // Get current user's image
+-(NSInteger)getNumberOfUsers;               // Get total number of users
+-(void)setCurrentUserTo:(NSInteger)index;   // Set current user by index
+-(NSString*)getUserBy:(NSInteger)index;        // Get username by index
+-(NSString*)getLevelBy:(NSInteger)index;       // Get user's level by index
+-(UIImage*)getUserImageBy:(NSInteger)index;    // Get user's image by index
 
-
--(NSString*)getUserByIndex:(NSInteger)index;
--(NSString*)getLevelByIndex:(NSInteger)index;
--(UIImage*)getUserImageByIndex:(NSInteger)index;
-//-(UserModel*)changeUser;
 @end
 
 NS_ASSUME_NONNULL_END
