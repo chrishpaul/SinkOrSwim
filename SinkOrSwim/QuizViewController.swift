@@ -59,12 +59,17 @@ class QuizViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         countDown = Int(timeSlider.value)
         
         // Show elements visible at quiz initialization
+        self.startButton.isHidden = false
         self.timedModeLabel.isHidden = false
         self.timerSwitch.isHidden = false
-        self.timeSlider.isHidden = false
         self.countdownLabel.text = String(countDown) + "s"
-        self.countdownLabel.isHidden = false
-        self.startButton.isHidden = false
+        if self.timerSwitch.isOn == true {
+            self.timeSlider.isHidden = false
+            self.countdownLabel.isHidden = false
+        } else {
+            self.timeSlider.isHidden = true
+            self.countdownLabel.isHidden = true
+        }
 
         // Hide elements not visible at quiz initialization
         self.mandarinLabel.isHidden = true
