@@ -17,12 +17,12 @@ Lab 1 Tracking Items:
 - [x]   Type 2: User Logo cell
 - [x]   Type 3: Pinyin and picture cells
 - [x] The design should work in both portrait and landscape mode. Use size classes if necessary. (2 pts)
-- [ ] Tested for crashing
+- [x] Tested for crashing
 - [x] Strictly adheres to Model View Controller programming practices. View should be agnostic to controller. Model should be agnostic to everything. (1pts)
-- [ ] Lazy instantiation used when possible
+- [x] Lazy instantiation used when possible
 - [x] Modal view and handle properly using custom protocols/delegation (1pts)
-- [ ] Tested the app running on a device, not the emulator to ensure it runs in all scenarios.
-- [ ] Coding Style: Organization, comments, object oriented structures used, proper Objective C or Swift paradigms implemented (2pts)
+- [x] Tested the app running on a device, not the emulator to ensure it runs in all scenarios.
+- [x] Coding Style: Organization, comments, object oriented structures used, proper Objective C or Swift paradigms implemented (2pts)
 
 A simple application to help students study Mandarin vocabulary words.
 
