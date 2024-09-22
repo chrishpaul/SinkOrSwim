@@ -115,7 +115,7 @@ NSString *const LESSON_FILE = @"TestData";      // Name of JSON file containing 
         return words;
     }
     
-    // File was empty or badly formatted
+    // File is empty or badly formatted
     NSLog(@"Invalid input JSON for lesson. Expected a dictionary. Check format of %@.json", LESSON_FILE);
     return [[NSDictionary alloc] init];
 }

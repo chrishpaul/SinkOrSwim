@@ -113,6 +113,7 @@ NSString *const USER_FILE = @"UserData";                    // JSON filename for
     // Check file is not empty and has expected NSDictionary structure
     if (userFile != nil && [userFile isKindOfClass:[NSDictionary class]]){
         id users = userFile[@"users"];
+        
         // Check that users is an NSArray
         if ([users isKindOfClass:[NSArray class]]){
             return users;

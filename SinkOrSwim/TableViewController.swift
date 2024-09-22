@@ -39,9 +39,12 @@ class TableViewController: UITableViewController, UserSelectDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Check for valid input files before loading table sections
         self.isValidLesson = self.mandarinModel.isValidLesson()
         self.isValidUsers = self.userModel.isValidInput()
         
+        // Display error message on landing screen if input file load error
         if !self.isValidLesson || !self.isValidUsers{
             self.errorLabel.text = "Application could not load.\nCheck for valid input files."
             self.errorLabel.isHidden = false
