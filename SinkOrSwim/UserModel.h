@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString*)getUserBy:(NSInteger)index;        // Get username by index
 -(NSString*)getLevelBy:(NSInteger)index;       // Get user's level by index
 -(UIImage*)getUserImageBy:(NSInteger)index;    // Get user's image by index
+-(BOOL)isValidInput;                        // True if valid user file
 
 @end
 
