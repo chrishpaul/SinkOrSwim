@@ -1,3 +1,5 @@
+A simple application to help students study Mandarin vocabulary words.
+
 Lab 1 Tracking Items:
 - [x] Automatic Layout 
 - [x] Buttons (Quiz view)
@@ -24,13 +26,13 @@ Lab 1 Tracking Items:
 - [x] Tested the app running on a device, not the emulator to ensure it runs in all scenarios.
 - [x] Coding Style: Organization, comments, object oriented structures used, proper Objective C or Swift paradigms implemented (2pts)
 
-A simple application to help students study Mandarin vocabulary words.
-
-Mandarin Tutor : UITableView with 3 cell types
-  1) Mandarin words with English translation -> clicking navigates to 'WordView'
-  2) Picture Dictionary cell -> clicking navigates to 'PictureDict'
+Mandarin Tutor : UITableViewController with 3 cell types
+  1) User Profile Cell -> dynamically loaded from user file. Clicking navigates modally to user selection view.
+  2) Mandarin words with English translation -> clicking navigates to 'WordView'
   3) Quiz cell -> clicking navigates to 'Quiz'
-WordView : UIView
+  4) Picture Dictionary cell -> clicking navigates to 'PictureDict'
+  5) Pinyin and Picture cells -> dynamically loaded from lesson file. 
+WordView : UIViewController
   1) UIScrollView with embedded UIImageView displays associated picture for the word
   2) UILabel to display English, Mandarin, and pinyin words
   3) UISegmentedControl to see Mandarin only, English only, pinyin only or all.
