@@ -1,0 +1,11 @@
+{
+    "users" : [{
+        "name" : "Alice",
+        "level" : "Advanced",
+        "picture" : "alice"
+    },{
+        "name" : "Bob",
+        "level" : "Intermediate",
+        "picture" : "bob"
+    }]
+}

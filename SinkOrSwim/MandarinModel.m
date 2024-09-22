@@ -107,23 +107,32 @@ NSString *const LESSON_FILE = @"TestData";      // Name of JSON file containing 
 -(NSDictionary*)loadLessonDict
 {
     // Loads lesson data from JSON file
+    
     id words = [self readJSONFromFile];
+    
+    // Check file is not empty and has expected NSDictionary structure
     if ([words isKindOfClass:[NSDictionary class]]){
         return words;
-    }else{
-        NSLog(@"Invalid input JSON for lesson. Expected a dictionary. Check format of %@.json", LESSON_FILE);
-        return [[NSDictionary alloc] init];
     }
-    return words;
+    
+    // File was empty or badly formatted
+    NSLog(@"Invalid input JSON for lesson. Expected a dictionary. Check format of %@.json", LESSON_FILE);
+    return [[NSDictionary alloc] init];
 }
 
 -(id)readJSONFromFile
 {
     // Reads JSON from file
     
+    NSFileManager *filemgr = [NSFileManager defaultManager];
     NSString *path = [[NSBundle mainBundle] pathForResource:LESSON_FILE ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    if ([filemgr fileExistsAtPath: path ]){                     // Check that file exists
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    }else{
+        NSLog(@"Input file not found: %@.json", LESSON_FILE);
+    }
+    return nil;
 }
 
 - (BOOL)isValidLesson {

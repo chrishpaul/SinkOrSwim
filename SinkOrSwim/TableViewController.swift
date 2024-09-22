@@ -43,7 +43,7 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         self.isValidUsers = self.userModel.isValidInput()
         
         if !self.isValidLesson || !self.isValidUsers{
-            self.errorLabel.text = "Application could not load. Check for valid input files."
+            self.errorLabel.text = "Application could not load.\nCheck for valid input files."
             self.errorLabel.isHidden = false
         }
     }
