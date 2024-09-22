@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <label key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ErrorLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CyZ-Jt-azO">
+                            <rect key="frame" x="0.0" y="479.66666793823242" width="393" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogoCell" id="qI3-m0-cbS" customClass="LogoTableViewCell" customModule="SinkOrSwim" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="119.33333587646484"/>
@@ -153,14 +160,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PinyinCell" id="wbq-YH-pqN" customClass="PinyinTableViewCell" customModule="SinkOrSwim" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="300.33333969116211" width="393" height="151"/>
+                                <rect key="frame" x="0.0" y="300.33333969116211" width="393" height="151.33332824707031"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wbq-YH-pqN" id="VEg-hE-yWS">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="151"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="151.33332824707031"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pinyinLabel" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEC-YL-wlk">
-                                            <rect key="frame" x="153.33333333333334" y="130" width="86.333333333333343" height="21"/>
+                                            <rect key="frame" x="153.33333333333334" y="130" width="86.333333333333343" height="21.333333333333343"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -196,6 +203,7 @@
                     <navigationItem key="navigationItem" title="Mandarin Tutor" id="pIK-fl-qQU"/>
                     <connections>
                         <outlet property="TableView" destination="P7h-Nv-daY" id="31Q-Z4-PhW"/>
+                        <outlet property="errorLabel" destination="CyZ-Jt-azO" id="fxE-YS-Dyi"/>
                         <outlet property="myTableView" destination="P7h-Nv-daY" id="Dhz-mL-fXi"/>
                     </connections>
                 </tableViewController>

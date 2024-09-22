@@ -21,6 +21,7 @@ class PinyinTableViewCell: UITableViewCell {
 }
 
 class TableViewController: UITableViewController, UserSelectDelegate {
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet var myTableView: UITableView!
 
     // MARK: - Variables
@@ -32,10 +33,19 @@ class TableViewController: UITableViewController, UserSelectDelegate {
         return MandarinModel.sharedInstance()
     }()
     
+    var isValidLesson: Bool = false
+    var isValidUsers: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.setUserDetailsFor(index: 0)
+        self.isValidLesson = self.mandarinModel.isValidLesson()
+        self.isValidUsers = self.userModel.isValidInput()
+        
+        if !self.isValidLesson || !self.isValidUsers{
+            self.errorLabel.text = "Application could not load. Check for valid input files."
+            self.errorLabel.isHidden = false
+        }
     }
     
     // MARK: - Table view data source
@@ -47,8 +57,10 @@ class TableViewController: UITableViewController, UserSelectDelegate {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 5
+        if (self.isValidLesson && self.isValidUsers){
+            return 5
+        }
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -107,19 +107,44 @@ NSString *const USER_FILE = @"UserData";                    // JSON filename for
 -(NSArray*)loadUsers
 {
     // Loads user data into array
+    id userFile = [self readUsersFromFile];
+    if (userFile != nil && [userFile isKindOfClass:[NSDictionary class]]){
+        id users = userFile[@"users"];
+        if ([users isKindOfClass:[NSArray class]]){
+            return users;
+        }
+    }
+    return [[NSArray alloc] init];
+}
+/*
+-(NSArray*)loadUsers
+{
+    // Loads user data into array
     
     NSDictionary* userFile = [self readUsersFromFile];
     NSArray* users = userFile[@"users"];
     return users;
-}
+}*/
 
 -(id)readUsersFromFile
 {
     // Reads JSON from file
-    
+    NSFileManager *filemgr = [NSFileManager defaultManager];
     NSString *path = [[NSBundle mainBundle] pathForResource:USER_FILE ofType:@"json"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    if ([filemgr fileExistsAtPath: path ]){
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    }
+    return nil;
+}
+
+- (BOOL)isValidInput {
+    // Checks for valid lesson input
+    
+    if(self.users.count > 0){
+        return true;
+    }
+    return false;
 }
 
 @end

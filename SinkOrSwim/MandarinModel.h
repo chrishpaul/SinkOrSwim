@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSInteger)getIndexOfWord:(NSString*)englishWord;      // Gets index of an English word
 -(NSArray*)getEnglishWords;                             // Gets a list of English words
 -(NSArray*)getShuffledWords;                            // Gets a shuffled list of English words
+-(BOOL)isValidLesson;                                   // True if input lesson file is valid
 
 @end
 

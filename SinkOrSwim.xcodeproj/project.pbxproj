@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841138C72CA0AEEA0028DB55 /* UserData2.json in Resources */ = {isa = PBXBuildFile; fileRef = 841138C62CA0AEEA0028DB55 /* UserData2.json */; };
 		84341A212C91F4AE00F28CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A202C91F4AE00F28CC7 /* AppDelegate.swift */; };
 		84341A232C91F4AE00F28CC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A222C91F4AE00F28CC7 /* SceneDelegate.swift */; };
 		84341A252C91F4AE00F28CC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84341A242C91F4AE00F28CC7 /* ViewController.swift */; };
@@ -21,13 +22,13 @@
 		843D9ED12C98C0440031BB17 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D9ED02C98C0400031BB17 /* ResultsViewController.swift */; };
 		843D9EF52C9938850031BB17 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 843D9EF42C9938850031BB17 /* TestData.json */; };
 		843D9EFF2C9B3B4C0031BB17 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 843D9EFE2C9B3B4C0031BB17 /* UserModel.m */; };
-		843D9F012C9B3F3F0031BB17 /* UserData.json in Resources */ = {isa = PBXBuildFile; fileRef = 843D9F002C9B3F3F0031BB17 /* UserData.json */; };
 		845BD0202C926CB6006AC90F /* GameplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845BD01F2C926CB6006AC90F /* GameplayKit.framework */; };
 		84B4FD792C94CDD300673ADA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */; };
 		84B4FD7B2C95333E00673ADA /* PicReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4FD7A2C95333E00673ADA /* PicReviewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		841138C62CA0AEEA0028DB55 /* UserData2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserData2.json; sourceTree = "<group>"; };
 		84341A1D2C91F4AE00F28CC7 /* SinkOrSwim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinkOrSwim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84341A202C91F4AE00F28CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84341A222C91F4AE00F28CC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		843D9EF42C9938850031BB17 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		843D9EFD2C9B3B4C0031BB17 /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		843D9EFE2C9B3B4C0031BB17 /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
-		843D9F002C9B3F3F0031BB17 /* UserData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UserData.json; sourceTree = "<group>"; };
 		845BD01F2C926CB6006AC90F /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = System/Library/Frameworks/GameplayKit.framework; sourceTree = SDKROOT; };
 		84B4FD782C94CDD300673ADA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		84B4FD7A2C95333E00673ADA /* PicReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicReviewController.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 				84341A372C91F87200F28CC7 /* MandarinModel.h */,
 				84341A382C91F87200F28CC7 /* MandarinModel.m */,
 				843D9EF42C9938850031BB17 /* TestData.json */,
-				843D9F002C9B3F3F0031BB17 /* UserData.json */,
+				841138C62CA0AEEA0028DB55 /* UserData2.json */,
 				84341A262C91F4AE00F28CC7 /* Main.storyboard */,
 				84341A292C91F4B000F28CC7 /* Assets.xcassets */,
 				84341A2B2C91F4B000F28CC7 /* LaunchScreen.storyboard */,
@@ -181,7 +181,7 @@
 				84341A2A2C91F4B000F28CC7 /* Assets.xcassets in Resources */,
 				84341A2D2C91F4B000F28CC7 /* Base in Resources */,
 				84341A282C91F4AE00F28CC7 /* Base in Resources */,
-				843D9F012C9B3F3F0031BB17 /* UserData.json in Resources */,
+				841138C72CA0AEEA0028DB55 /* UserData2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
